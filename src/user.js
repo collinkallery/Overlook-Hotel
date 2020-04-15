@@ -1,10 +1,10 @@
 class User {
-  constructor() {
-    this.username = username;
+  constructor(user) {
+    this.username = `customer${user.id}`;
     this.password = 'overlook2019';
-    this.id = id;
-    this.name = name;
-    this.amountSpent = amountSpent;
+    this.id = user.id;
+    this.name = user.name;
+    // this.amountSpent = amountSpent;
     this.pastTrips = [];
     this.upcomingTrips = [];
     this.allBookings = [];
