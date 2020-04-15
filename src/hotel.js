@@ -8,6 +8,10 @@ class Hotel {
     this.guests = [];
     this.allBookings = [];
   }
+  findUser(username) {
+    let chosenUser = this.guests.find(guest => username === guest.username);
+    console.log(chosenUser);
+  }
   calculateRevenue() {
     // method that adds up all
     // revenue across all bookings

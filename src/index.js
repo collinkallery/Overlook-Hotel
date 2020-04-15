@@ -63,3 +63,9 @@ let instantiateAllBookings = () => {
     hotel.allBookings.push(booking);
   })
 };
+
+$('#login-button').on('click', (event) => signIntoOverlook());
+
+function signIntoOverlook() {
+  hotel.findUser($('#username-input').val());
+}
