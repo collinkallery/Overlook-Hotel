@@ -1,3 +1,7 @@
+import domUpdates from './domUpdates'
+var Moment = require('moment');
+let todayDate = Number(Moment().format('YYYY/MM/DD').split('/').join(''));
+
 class User {
   constructor(user) {
     this.username = `customer${user.id}`;
@@ -24,6 +28,18 @@ class User {
   viewAmountSpent() {
     // method that calculates the total amount
     // of money spent on all booked trips
+  }
+  sortTrips() {
+    let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
+    sortedTrips.forEach(trip => {
+      let date = Number(trip.date.split('/').join(''));
+      if (date > todayDate) {
+        this.upcomingTrips.push(trip)
+      } else {
+        this.pastTrips.push(trip);
+      }
+    })
+    domUpdates.displayPastTrips(this.pastTrips);
   }
 }
 
