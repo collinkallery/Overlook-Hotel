@@ -19,10 +19,6 @@ body {
 }
 
 #login-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   text-align: center;
   height: 90%;
   background-image: url(https://images.unsplash.com/photo-1554840757-8ceb09d6aa05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
@@ -74,27 +70,28 @@ body {
   cursor: pointer;
 }
 
+#welcome-container {
+  margin-top: 15%;
+}
+
 #customer-page {
   background-image: url(https://images.unsplash.com/photo-1567491634123-460945ea86dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80);
   background-position: center;
   background-size: cover;
   height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #customer-page-container {
   background-color: black;
-  opacity: 85%;
-  width: 60%;
-  height: 60%;
+  opacity: 90%;
+  width: 70%;
+  height: 70%;
   color: white;
   overflow: scroll;
   border-radius: .5vw;
   padding: 2vw;
   border: 2px solid white;
+  margin-top: .5vw;
 }
 
 #customer-booking-container {
@@ -135,9 +132,17 @@ body {
 
 .welcome-user {
   color: #DEFCFF;
-  font-size: 3em;
+  font-size: 2.5em;
   font-family: 'Cardo', serif;
-  margin-right: 70%;
+  margin-right: 40%;
+  margin-top: 2vw;
+}
+
+#usernamne-header {
+  color: #DEFCFF;
+  font-size: 2.5em;
+  font-family: 'Cardo', serif;
+  margin-right: 40%;
   margin-top: 0;
 }
 
@@ -146,10 +151,6 @@ body {
   background-position: center;
   background-size: cover;
   height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #manager-page-container {
@@ -162,4 +163,60 @@ body {
   border-radius: .5vw;
   padding: 2vw;
   border: 2px solid white;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
+}
+
+#past-reservations-container {
+  display: flex;
+  flex-direction: column;
+  // height: 20em;
+  // overflow: scroll;
+}
+
+#past-reservations-container div:nth-child(n+5) {
+  display: none;
+}
+
+.past-trip-card {
+  background-color: #DEFCFF;
+  color: black;
+  margin: 1vw;
+  padding: .5vw;
+}
+
+#view-more-past-trips-button {
+  margin: .5vw;
+  padding: .4vw;
+  border: 1px solid black;
+  border-radius: 7px;
+  letter-spacing: 0;
+  background-color: white;
+  color: black;
+  font-size: 1em;
+  font-family: 'Cardo', serif;
+  text-align: center;
+}
+
+#view-more-past-trips-button:hover {
+  background-color: #DEFCFF;
+  color: black;
+  cursor: pointer;
+}
+
+.room-details-p {
+  font-size: .8em;
+}
+
+.room-image {
+  width: 25vw;
 }
