@@ -12,7 +12,7 @@
   <header>
     <h1 id="banner">Overlook Hotel</h1>
   </header>
-  <main class="hidden" id="login-page">
+  <main class="flex" id="login-page">
     <section id="welcome-container">
       <h2>Experience OVERLOOK</h2>
       <h3>Your next luxury stay awaits...</h3>
@@ -23,33 +23,21 @@
       </form>
     </section>
   </main>
-  <!-- <main id="customer-page">
-    <h1 class="welcome-user">Welcome, Collin</h1>
+  <main class="flex" id="customer-page">
+    <h1 class="welcome-user">Welcome, <span id="username-header"></span></h1>
     <section id="customer-page-container">
       <h2>Plan your next stay with OVERLOOK:</h2>
       <section id="customer-booking-container">
         <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
-            <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
-            <label class="future-date-text" for="departure-date-input">Departure date:<label>
-                <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
-                <button type="button" id="search-dates-button">Search availability</button>
+        <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
+        <label class="future-date-text" for="departure-date-input">Departure date:<label>
+        <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
+        <button type="button" id="search-dates-button">Search availability</button>
       </section>
       <h2>View your past reservations:</h2>
       <section id="past-reservations-container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum at varius vel pharetra vel turpis nunc. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
-          massa eget. Sem nulla pharetra diam sit amet nisl. Non tellus orci ac auctor. Quis auctor elit sed vulputate mi sit amet. Mauris a diam maecenas sed enim ut. Commodo viverra maecenas accumsan lacus vel facilisis volutpat. Amet mauris
-          commodo quis imperdiet massa tincidunt nunc. Sed blandit libero volutpat sed cras. Non enim praesent elementum facilisis leo vel fringilla.</br>
-
-          Commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Nec nam aliquam sem et tortor consequat id porta. Luctus accumsan tortor posuere ac ut consequat semper
-          viverra nam. Sed blandit libero volutpat sed cras. Fusce ut placerat orci nulla pellentesque. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Sit amet luctus venenatis lectus magna fringilla urna porttitor. Eu
-          volutpat odio facilisis mauris sit amet. Rhoncus aenean vel elit scelerisque. Ullamcorper dignissim cras tincidunt lobortis. Justo eget magna fermentum iaculis eu non diam phasellus. Arcu dui vivamus arcu felis bibendum ut tristique et
-          egestas. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur.</br>
-
-          Nisi lacus sed viverra tellus in hac habitasse. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Fames ac turpis egestas maecenas pharetra convallis posuere. In nisl nisi scelerisque eu. Dui accumsan sit
-          amet nulla facilisi morbi tempus iaculis. Tempor orci dapibus ultrices in. Morbi quis commodo odio aenean sed adipiscing diam. Eget aliquet nibh praesent tristique. Aliquam faucibus purus in massa. Eget gravida cum sociis natoque penatibus
-          et magnis dis. Rhoncus est pellentesque elit ullamcorper dignissim. Augue eget arcu dictum varius duis at consectetur. Faucibus nisl tincidunt eget nullam non. Adipiscing vitae proin sagittis nisl rhoncus mattis. Venenatis urna cursus eget
-          nunc scelerisque viverra mauris.</p>
       </section>
+      <button id="view-more-past-trips-button">Load more trips</button>
       <h2>View your upcoming reservations:</h2>
       <section id="future-reservations-container">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum at varius vel pharetra vel turpis nunc. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
@@ -67,12 +55,12 @@
           nunc scelerisque viverra mauris.</p>
       </section>
     </section>
-  </main> -->
-  <!-- <main id="manager-page">
+  </main>
+  <main class="flex" id="manager-page">
     <h1 class="welcome-user">Welcome, Collin</h1>
     <section id="manager-page-container">
     </section>
-  </main> -->
+  </main>
 </body>
 
 </html>
