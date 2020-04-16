@@ -40,6 +40,7 @@ class User {
       }
     })
     domUpdates.displayPastTrips(this.pastTrips);
+    domUpdates.displayUpcomingTrips(this.upcomingTrips);
   }
 }
 
