@@ -71,17 +71,26 @@ let domUpdates = {
     allReservations.forEach(reservation => {
       $('#manager-page-reservations-container').append(`
         <div class="reservation-card">
-          <h3 class="reservation-card-name">Upcoming Reservation for ${reservation.name}, UserID: ${reservation.userID}</h3>
+          <h3 class="reservation-card-name">Upcoming Reservation for ${reservation.name}</h3>
           <section class="reservation-details-container">
             <ul>
               <li>Arrival Date: ${reservation.date}</li>
+              <li>UserID: ${reservation.userID}</li>
               <li>Room Type & Number: <span class="capitalize">${reservation.roomType}</span>, #${reservation.roomNumber}</li>
               <li>Bidet: ${reservation.bidet}</li>
               <li>Bed Size & Number of Beds: <span class="capitalize">${reservation.bedSize}</span>, ${reservation.numBeds}</li>
-              <li>Nightly rate: ${reservation.costPerNight}
+              <li>Nightly rate: ${reservation.costPerNight} USD</li>
             </ul>
           </section>
           <button class="cancel-reservation-button">Cancel Reservation</button>
+        </div>`)
+    })
+  },
+  displayAllGuests(guests) {
+    guests.forEach(guest => {
+      $('#all-guests-container').append(`
+        <div class="guest-card">
+          <p class="">${guest.name}, UserID: ${guest.id}</p>
         </div>`)
     })
   }
