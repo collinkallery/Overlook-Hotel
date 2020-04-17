@@ -10,13 +10,18 @@ class Hotel {
     this.guests = [];
     this.allBookings = [];
   }
-  setUpUser(username) {
+  setUpCustomer(username) {
     let chosenUser = this.guests.find(guest => username === guest.username);
     let allUserTrips = this.allBookings.filter(booking => booking.userID === chosenUser.id);
     chosenUser.allBookings = allUserTrips;
     console.log(chosenUser.allBookings);
     domUpdates.displayUserName(chosenUser);
     chosenUser.sortTrips();
+  }
+  setUpManager() {
+    // display today's reservations
+    // show any roooms available
+    // display % of rooms occupied today
   }
   calculateRevenue() {
     // method that adds up all
