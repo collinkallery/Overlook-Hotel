@@ -6,19 +6,17 @@ import Room from './room';
 import User from './user';
 
 let domUpdates = {
-  displayUserName(user) {
-    $(".welcome-user").text(`Welcome, ${user.name}`);
-  },
 
-  showManagementPage() {
+  showManagementPage(user) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#manager-page').removeClass('hide').addClass('flex');
     $('#banner').text('Overlook Hotel Management')
   },
 
-  showCustomerPage() {
+  showCustomerPage(user) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#customer-page').removeClass('hide').addClass('flex');
+    $(".welcome-user").text(`Welcome, ${user.name}`);
   },
   displayPastTrips(trips) {
     trips.forEach(trip => {
@@ -66,6 +64,24 @@ let domUpdates = {
           <div class="image-holder">
             <img class="room-image" src="${trip.image}">
           </div>
+        </div>`)
+    })
+  },
+  displayAllReservations(allReservations) {
+    allReservations.forEach(reservation => {
+      $('#manager-page-reservations-container').append(`
+        <div class="reservation-card">
+          <h3 class="reservation-card-name">Upcoming Reservation for ${reservation.name}, UserID: ${reservation.userID}</h3>
+          <section class="reservation-details-container">
+            <ul>
+              <li>Arrival Date: ${reservation.date}</li>
+              <li>Room Type & Number: <span class="capitalize">${reservation.roomType}</span>, #${reservation.roomNumber}</li>
+              <li>Bidet: ${reservation.bidet}</li>
+              <li>Bed Size & Number of Beds: <span class="capitalize">${reservation.bedSize}</span>, ${reservation.numBeds}</li>
+              <li>Nightly rate: ${reservation.costPerNight}
+            </ul>
+          </section>
+          <button class="cancel-reservation-button">Cancel Reservation</button>
         </div>`)
     })
   }
