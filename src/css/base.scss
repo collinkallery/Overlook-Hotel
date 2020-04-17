@@ -134,7 +134,7 @@ body {
   color: black;
   font-size: 1.5em;
   font-family: 'Cardo', serif;
-  margin-right: 50%;
+  margin-right: 60%;
   margin-top: 2vw;
   background-color: #DEFCFF;
   padding: .7vw;
@@ -157,16 +157,52 @@ body {
   height: 90%;
 }
 
-#manager-page-container {
+#manager-page-booking-container {
   background-color: black;
   opacity: 85%;
-  width: 60%;
-  height: 60%;
+  width: 86%;
+  height: 35%;
+  margin-top: 3vw;
+  display: block;
+  border: 4px solid white;
   color: white;
-  overflow: scroll;
   border-radius: .5vw;
-  padding: 2vw;
-  border: 2px solid white;
+  padding: 1.5vw 1vw 1.5vw 1vw;
+}
+
+#manager-page-revenue-container {
+  background-color: black;
+  opacity: 85%;
+  width: 40%;
+  height: 70%;
+  margin: 2vw;
+  border: 4px solid white;
+  color: white;
+  border-radius: .5vw;
+  padding: 1.5vw 1vw 1.5vw 1vw;
+}
+
+#manager-page-reservations-container {
+  background-color: black;
+  opacity: 85%;
+  width: 40%;
+  height: 70%;
+  margin: 2vw;
+  border: 4px solid white;
+  color: white;
+  border-radius: .5vw;
+  padding: 1.5vw 1vw 1.5vw 1vw;
+  overflow: scroll;
+}
+
+#revenue-and-reservations {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .flex {
@@ -243,4 +279,75 @@ body {
 .room-image {
   width: 25vw;
   border: 3px solid black;
+}
+
+#manager-search-dates-button {
+  margin: .5vw;
+  padding: .4vw;
+  border: 1px solid black;
+  border-radius: 7px;
+  letter-spacing: 0;
+  background-color: white;
+  color: black;
+  font-size: 1em;
+  font-family: 'Cardo', serif;
+}
+
+#manager-search-dates-button:hover {
+  background-color: #DEFCFF;
+  color: black;
+  cursor: pointer;
+}
+
+.manager-booking-header {
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid #DEFCFF;
+}
+
+#booking-input-container {
+  padding: 1vw;
+}
+
+.search-customer-input {
+  display: inline-block;
+  width: 20%;
+  margin: .5vw;
+  padding: .7vw;
+  font-size: .7em;
+  border: 1px solid black;
+  border-radius: 7px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.reservation-card {
+  background-color: #DEFCFF;
+  padding: .2vw 2.5vw;
+  color: black;
+  margin: 2vw 3vw;
+}
+
+.cancel-reservation-button {
+  align-self: center;
+  width: 50%;
+  margin: .2vw;
+  padding: .2vw;
+  border: 1px solid black;
+  border-radius: 7px;
+  letter-spacing: 0;
+  background-color: black;
+  color: white;
+  font-size: .8em;
+  font-family: 'Cardo', serif;
+}
+
+.cancel-reservation-button:hover {
+  background-color: #5D5D5D;
+  color: white;
+  cursor: pointer;
 }

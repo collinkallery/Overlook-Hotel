@@ -1,10 +1,9 @@
 import $ from 'jquery';
 import './css/base.scss';
-import Booking from './booking';
 import Hotel from './hotel';
 import Manager from './manager';
-import Room from './room';
 import User from './user';
+import domUpdates from './domUpdates'
 var Moment = require('moment');
 
 let userData;
@@ -80,9 +79,16 @@ function loadPage() {
 }
 
 function signIntoOverlook() {
-  hotel.setUpUser($('#username-input').val());
-  $('#login-page').removeClass('flex').addClass('hide');
-  $('#customer-page').removeClass('hide').addClass('flex');
+  if ($('#username-input').val().includes('manager')) {
+    hotel.setUpManager();
+  }
+  if ($('#username-input').val().includes('customer')) {
+    hotel.setUpCustomer($('#username-input').val())
+  }
+  // hotel.setUpCustomer($('#username-input').val());
+  // domUpdates.showCustomerPage()
+
+
 }
 
 $('#view-more-past-trips-button').click(function() {
