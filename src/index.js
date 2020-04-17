@@ -80,8 +80,10 @@ function loadPage() {
 
 function signIntoOverlook() {
   if ($('#username-input').val().includes('manager')) {
-    domUpdates.showManagementPage();
     hotel.setUpManager();
+  }
+  if ($('#username-input').val().includes('customer')) {
+    hotel.setUpCustomer($('#username-input').val())
   }
   // hotel.setUpCustomer($('#username-input').val());
   // domUpdates.showCustomerPage()
