@@ -90,7 +90,11 @@ let domUpdates = {
     guests.forEach(guest => {
       $('#all-guests-container').append(`
         <div class="guest-card">
-          <p class="">${guest.name}, UserID: ${guest.id}</p>
+          <div class="guest-info">
+            <p class="guest-card-name">${guest.name}</p>
+            <p class="guest-card-name">UserID: ${guest.id}</p>
+          </div>
+          <button class="expand-guest-info-button"><img class="guest-info-image"src="https://image.flaticon.com/icons/svg/1828/1828885.svg"></button>
         </div>`)
     })
   }
