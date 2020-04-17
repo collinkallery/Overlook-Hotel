@@ -26,10 +26,14 @@ class Hotel {
     console.log(this.allBookings);
     domUpdates.showManagementPage();
     domUpdates.displayAllReservations(this.allBookings);
+    domUpdates.displayAllGuests(this.guests);
   }
   calculateRevenue() {
     // method that adds up all
     // revenue across all bookings
+  }
+  calculatePercentageOfRoomsBooked() {
+
   }
   sortAllBookings() {
     let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
