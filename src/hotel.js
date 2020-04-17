@@ -1,4 +1,6 @@
 import domUpdates from './domUpdates'
+var Moment = require('moment');
+
 
 class Hotel {
   constructor(userData, roomData, bookingData) {
@@ -15,17 +17,33 @@ class Hotel {
     let allUserTrips = this.allBookings.filter(booking => booking.userID === chosenUser.id);
     chosenUser.allBookings = allUserTrips;
     console.log(chosenUser.allBookings);
-    domUpdates.displayUserName(chosenUser);
+    domUpdates.showCustomerPage(chosenUser);
     chosenUser.sortTrips();
   }
   setUpManager() {
-    // display today's reservations
-    // show any roooms available
-    // display % of rooms occupied today
+    this.sortAllBookings();
+    this.matchNamesToBookings();
+    console.log(this.allBookings);
+    domUpdates.showManagementPage();
+    domUpdates.displayAllReservations(this.allBookings);
   }
   calculateRevenue() {
     // method that adds up all
     // revenue across all bookings
+  }
+  sortAllBookings() {
+    let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
+    sortedTrips = this.allBookings;
+  }
+  matchNamesToBookings() {
+    let bookingsWithNames = this.allBookings.map(booking => {
+      this.guests.forEach(guest => {
+        if (booking.userID === guest.id) {
+          booking.name = guest.name;
+        }
+      })
+    })
+    bookingsWithNames = this.allBookings;
   }
 }
 
