@@ -320,7 +320,7 @@ body {
 .search-customer-input {
   display: inline-block;
   width: 90%;
-  margin: 1vw;
+  margin: 2vw 1vw 1vw 1vw;
   padding: .6vw;
   font-size: 1em;
   border: 1px solid black;
@@ -371,9 +371,26 @@ body {
   color: black;
   margin: .7vw;
   font-size: 1.3em;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
 }
 
 .guest-card-name {
-  padding: 0;
-  margin: 0;
+  margin: .3vw;
+  padding: .2vw;
+  display: block;
+}
+
+.expand-guest-info-button {
+  height: 100%;
+  background-color: #DEFCFF;
+  border: none;
+  margin-left: auto;
+}
+
+.guest-info-image {
+  width: 2vw;
+  height: 2vw;
+  background-color: #DEFCFF;
 }
