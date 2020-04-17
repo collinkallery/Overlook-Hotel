@@ -7,7 +7,18 @@ import User from './user';
 
 let domUpdates = {
   displayUserName(user) {
-    $('#username-header').text(user.name);
+    $(".welcome-user").text(`Welcome, ${user.name}`);
+  },
+
+  showManagementPage() {
+    $('#login-page').removeClass('flex').addClass('hide');
+    $('#manager-page').removeClass('hide').addClass('flex');
+    $('#banner').text('Overlook Hotel Management')
+  },
+
+  showCustomerPage() {
+    $('#login-page').removeClass('flex').addClass('hide');
+    $('#customer-page').removeClass('hide').addClass('flex');
   },
   displayPastTrips(trips) {
     trips.forEach(trip => {
