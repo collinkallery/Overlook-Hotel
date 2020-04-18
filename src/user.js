@@ -29,9 +29,8 @@ class User {
     // method that calculates the total amount
     // of money spent on all booked trips
   }
-  sortTrips() {
-    let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
-    sortedTrips.forEach(trip => {
+  organizeTrips() {
+    this.allBookings.forEach(trip => {
       let date = Number(trip.date.split('/').join(''));
       if (date > todayDate) {
         this.upcomingTrips.push(trip)

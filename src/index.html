@@ -63,24 +63,40 @@
   </main>
   <main class="flex" id="manager-page">
     <section id="manager-page-booking-container">
-        <h2 class="manager-booking-header">Create booking for a customer:</h2>
+        <h2 class="manager-booking-header">Guest Information & Booking</h2>
+        <div id="search-customer-input-container">
+          <input type="search" class="search-customer-input" placeholder="Search customer name...">
+        </div>
         <section id="booking-input-container">
-          <input type="search" class="search-customer-input" placeholder="Search customer name">
-          <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
+          <div id="all-guests-container">
+          </div>
+          <div class="hide" id="specific-guest-container">
+          </div>
+          <!-- <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
           <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
           <label class="future-date-text" for="departure-date-input">Departure date:<label>
           <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
-          <button type="button" id="manager-search-dates-button">Search availability</button>
+          <button type="button" id="manager-search-dates-button">Search availability</button> -->
         </section>
     </section>
-    <div id="revenue-and-reservations">
+    <section id="manager-page-revenue-container">
+      <h2 class="manager-booking-header">Revenue, Sales & Occupancy</h2>
+    </section>
+    <section id="manager-page-reservations-container">
+      <h2 class="manager-booking-header">Today's Reservations & Rooms Available</h2>
+      <section id="today-reservations-container">
+      </section>
+      <section id="rooms-available-container">
+      </section>
+    </section>
+    <!-- <div id="revenue-and-reservations">
       <section id="manager-page-revenue-container">
-        <h2 class="manager-booking-header">Revenue & Sales</h2>
+        <h2 class="manager-booking-header">Revenue, Sales & Occupancy</h2>
       </section>
       <section id="manager-page-reservations-container">
         <h2 class="manager-booking-header">Reservations & Bookings</h2>
       </section>
-    </div>
+    </div> -->
   </main>
 </body>
 

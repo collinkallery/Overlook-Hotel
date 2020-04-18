@@ -15,6 +15,7 @@ let domUpdates = {
 
   showCustomerPage(user) {
     $('#login-page').removeClass('flex').addClass('hide');
+    $('#manager-page').removeClass('flex').addClass('hide');
     $('#customer-page').removeClass('hide').addClass('flex');
     $(".welcome-user").text(`Welcome, ${user.name}`);
   },
@@ -71,19 +72,51 @@ let domUpdates = {
     allReservations.forEach(reservation => {
       $('#manager-page-reservations-container').append(`
         <div class="reservation-card">
-          <h3 class="reservation-card-name">Upcoming Reservation for ${reservation.name}, UserID: ${reservation.userID}</h3>
+          <h3 class="reservation-card-name">Upcoming Reservation for ${reservation.name}</h3>
           <section class="reservation-details-container">
             <ul>
               <li>Arrival Date: ${reservation.date}</li>
+              <li>UserID: ${reservation.userID}</li>
               <li>Room Type & Number: <span class="capitalize">${reservation.roomType}</span>, #${reservation.roomNumber}</li>
               <li>Bidet: ${reservation.bidet}</li>
               <li>Bed Size & Number of Beds: <span class="capitalize">${reservation.bedSize}</span>, ${reservation.numBeds}</li>
-              <li>Nightly rate: ${reservation.costPerNight}
+              <li>Nightly rate: ${reservation.costPerNight} USD</li>
             </ul>
           </section>
           <button class="cancel-reservation-button">Cancel Reservation</button>
         </div>`)
     })
+  },
+  displayAllGuests(guests) {
+    guests.forEach(guest => {
+      $('#all-guests-container').append(`
+        <div id=${guest.id} class="guest-card">
+          <div class="guest-info">
+            <p class="guest-card-name">${guest.name}</p>
+            <p class="guest-card-name">UserID: ${guest.id}</p>
+          </div>
+          <button class="expand-guest-info-button"><img class="guest-info-image"src="https://image.flaticon.com/icons/svg/1828/1828885.svg"></button>
+        </div>`)
+    })
+  },
+  expandSpecificGuestInfo(guest) {
+    $('#all-guests-container').addClass('hide');
+    $('#specific-guest-container').removeClass('hide').html(`
+      <div class="specific-guest-card">
+        <h3 class="specific-guest-name">${guest.name}</h3>
+        <section class="specific-guest-details-container">
+          <p>${guest.name} has been on ${guest.pastTrips.length} trips with OVERLOOK.
+          Guest has ${guest.upcomingTrips.length} reservations booked for the future.</p>
+        </section>
+        <h3 class="specific-guest-booking-header">Create booking for ${guest.name}:</h3>
+        <section class="specific-guest-booking-container">
+          <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
+          <input type="date" class="specific-booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
+          <label class="future-date-text" for="departure-date-input">Departure date:<label>
+          <input type="date" class="specific-booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
+          <button type="button" class="manager-search-dates-button">Search availability</button>
+        </section>
+      </div>`);
   }
 }
 
