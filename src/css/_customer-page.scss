@@ -1,0 +1,68 @@
+#customer-page {
+  @include main-page-background;
+  background-image: url(https://images.unsplash.com/photo-1567491634123-460945ea86dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80);
+}
+
+#customer-page-container {
+  @include main-block-container(70%, 70%, .5vw, 1.5vw 3.5vw 1vw 3.5vw);
+}
+
+#customer-booking-container {
+  text-align: center;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+
+#search-dates-button:hover {
+  @include button-hover($light-blue, black);
+}
+
+.welcome-user {
+  @include welcome-user-styling;
+}
+
+#past-reservations-container {
+  @include flex(column);
+}
+
+#future-reservations-container {
+  @include flex(column);
+}
+
+#past-reservations-container div:nth-child(n+5) {
+  display: none;
+}
+
+.trip-card {
+  @include card-styling(2vw 6vw 2vw 6vw, 1em, 1vw);
+  width: 65%;
+  align-self: center;
+}
+
+.trip-header {
+  text-align: center;
+  border-bottom: 3px solid black;
+  padding-bottom: 1vw;
+}
+
+.reservation-info {
+  border: 2px solid #DEFCFF;
+  padding: 1vw;
+}
+
+#view-more-past-trips-button {
+  @include main-button(.5vw, .4vw, white, black, 1em);
+  text-align: center;
+}
+
+#view-more-past-trips-button:hover {
+  @include button-hover($light-blue, black);
+}
+
+.room-details-p {
+  font-size: .8em;
+}
+
+.room-image {
+  @include room-image-styling;
+}

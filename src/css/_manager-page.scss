@@ -1,0 +1,99 @@
+#manager-page {
+  @include main-page-background;
+  background-image: url(https://images.unsplash.com/photo-1482635334133-de0ee55e5864?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80);
+  flex-direction: row;
+}
+
+#manager-page-booking-container {
+  @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+}
+
+#manager-page-revenue-container {
+  @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+}
+
+#manager-page-reservations-container {
+  @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+}
+
+.manager-search-dates-button {
+  @include main-button(.2vw, .2vw, black, white, .8em);
+}
+
+.manager-search-dates-button:hover {
+  @include button-hover($grey, white);
+}
+
+.manager-booking-header {
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid $light-blue;
+}
+
+#booking-input-container {
+  padding: 1vw;
+}
+
+#search-customer-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-customer-input {
+  @include input-styling(90%, 2vw 1vw 1vw 1vw, .6vw, 1em);
+  display: inline-block;
+}
+
+.reservation-card {
+  @include card-styling(.2vw 2.5vw, .8em, 2vw 3vw);
+}
+
+.reservation-card-name {
+  padding-bottom: .5vw;
+  border-bottom: 2px solid black;
+}
+
+.cancel-reservation-button {
+  @include main-button(.2vw, .2vw, black, white, 1em);
+}
+
+.cancel-reservation-button:hover {
+  @include button-hover($grey, white);
+}
+
+.guest-card {
+  @include card-styling(.3vw, 1.3em, .7vw);
+  @include flex(row);
+}
+
+.guest-card-name {
+  margin: .3vw;
+  padding: .2vw;
+  display: block;
+}
+
+.expand-guest-info-button {
+  height: 100%;
+  background-color: #DEFCFF;
+  border: none;
+  margin-left: auto;
+}
+
+.guest-info-image {
+  width: 2vw;
+  height: 2vw;
+  background-color: #DEFCFF;
+}
+
+.specific-guest-card {
+  @include card-styling(.7vw, .8em, .7vw);
+}
+
+.specific-guest-booking-container {
+  @include flex(column);
+}
+
+.specific-booking-input {
+  @include input-styling(70%, .5vw, .7vw, .7em);
+  display: block;
+}

@@ -1,0 +1,84 @@
+$light-blue: #DEFCFF;
+$grey: #5D5D5D;
+$cursive-font: 'Cardo', serif;
+
+@mixin main-page-background {
+  height: 90%;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin main-button($margin, $padding, $background-color, $color, $font-size) {
+  align-self: center;
+  width: 50%;
+  margin: $margin;
+  padding: $padding;
+  border: 1px solid black;
+  border-radius: 7px;
+  letter-spacing: 0;
+  background-color: $background-color;
+  color: $color;
+  font-size: $font-size;
+  font-family: $cursive-font;
+}
+
+@mixin button-hover($background-color, $color) {
+  background-color: $background-color;
+  color: $color;
+  cursor: pointer;
+}
+
+@mixin input-styling($width, $margin, $padding, $font-size) {
+  width: $width;
+  margin: $margin;
+  padding: $padding;
+  font-size: $font-size;
+  border: 1px solid black;
+  border-radius: 7px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin main-block-container($width, $height, $margin, $padding) {
+  background-color: black;
+  opacity: 87%;
+  width: $width;
+  height: $height;
+  margin: $margin;
+  padding: $padding;
+  border: 4px solid white;
+  color: white;
+  border-radius: .5vw;
+  overflow: scroll;
+}
+
+@mixin welcome-user-styling {
+  color: black;
+  font-size: 1.5em;
+  font-family: $cursive-font;
+  margin-right: 60%;
+  margin-top: 2vw;
+  background-color: $light-blue;
+  padding: .7vw;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+@mixin card-styling($padding, $font-size, $margin) {
+  background-color: $light-blue;
+  padding: $padding;
+  font-size: $font-size;
+  margin: $margin;
+  color: black;
+  border-radius: 5px;
+}
+
+@mixin flex($flex-direction) {
+  display: flex;
+  flex-direction: $flex-direction;
+}
+
+@mixin room-image-styling {
+  width: 25vw;
+  border: 3px solid black;
+}

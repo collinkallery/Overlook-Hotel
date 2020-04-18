@@ -34,14 +34,13 @@ Promise.all([userData, roomData, bookingData])
     bookingData = data[2];
   })
   .then(() => {
-    // hotel = new Hotel(userData, roomData, bookingData);
     createHotel(userData, roomData, bookingData);
     instantiateAllUsers();
     attachImagesToRooms();
     createRoomObjects();
     createBookingObjects();
     hotel.setUpHotel();
-    loadPage();
+    loadInitialDom();
     console.log('Data Received');
   })
   .catch(error => {
@@ -78,7 +77,7 @@ let createBookingObjects = () => {
 
 $('#login-button').on('click', (event) => signIntoOverlook());
 
-function loadPage() {
+let loadInitialDom = () => {
   $('#customer-page').removeClass('flex').addClass('hide');
   $('#manager-page').removeClass('flex').addClass('hide');
 }
@@ -97,9 +96,7 @@ $('#view-more-past-trips-button').click(function() {
 });
 
 $('#all-guests-container').on('click', 'button', function(event) {
-  console.log('hiiiiii', $(event.target).parent().parent().attr('id'));
   domUpdates.expandSpecificGuestInfo(hotel.findSpecificUserById($(event.target).parent().parent().attr('id')))
-  hotel.findSpecificUserById($(event.target).parent().parent().attr('id'));
 });
 
 function matchRoomsToBookings() {
