@@ -15,6 +15,7 @@ let domUpdates = {
 
   showCustomerPage(user) {
     $('#login-page').removeClass('flex').addClass('hide');
+    $('#manager-page').removeClass('flex').addClass('hide');
     $('#customer-page').removeClass('hide').addClass('flex');
     $(".welcome-user").text(`Welcome, ${user.name}`);
   },
@@ -89,7 +90,7 @@ let domUpdates = {
   displayAllGuests(guests) {
     guests.forEach(guest => {
       $('#all-guests-container').append(`
-        <div class="guest-card">
+        <div id=${guest.id} class="guest-card">
           <div class="guest-info">
             <p class="guest-card-name">${guest.name}</p>
             <p class="guest-card-name">UserID: ${guest.id}</p>
@@ -97,6 +98,25 @@ let domUpdates = {
           <button class="expand-guest-info-button"><img class="guest-info-image"src="https://image.flaticon.com/icons/svg/1828/1828885.svg"></button>
         </div>`)
     })
+  },
+  expandSpecificGuestInfo(guest) {
+    $('#all-guests-container').addClass('hide');
+    $('#specific-guest-container').removeClass('hide').html(`
+      <div class="specific-guest-card">
+        <h3 class="specific-guest-name">${guest.name}</h3>
+        <section class="specific-guest-details-container">
+          <p>${guest.name} has been on ${guest.pastTrips.length} trips with OVERLOOK.
+          Guest has ${guest.upcomingTrips.length} reservations booked for the future.</p>
+        </section>
+        <h3 class="specific-guest-booking-header">Create booking for ${guest.name}:</h3>
+        <section class="specific-guest-booking-container">
+          <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
+          <input type="date" class="specific-booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
+          <label class="future-date-text" for="departure-date-input">Departure date:<label>
+          <input type="date" class="specific-booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
+          <button type="button" class="manager-search-dates-button">Search availability</button>
+        </section>
+      </div>`);
   }
 }
 
