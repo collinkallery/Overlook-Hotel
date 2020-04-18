@@ -1,0 +1,32 @@
+#login-page {
+  @include main-page-background;
+  background-image: url(https://images.unsplash.com/photo-1554840757-8ceb09d6aa05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  text-align: center;
+}
+
+#login-form {
+  @include flex(column);
+}
+
+.login-input {
+  @include input-styling(80%, .5vw, .7vw, 1em);
+  align-self: center;
+}
+
+.login-input:hover,
+.login-input:focus {
+  background-color: #EAEAEA;
+  color: black;
+}
+
+#login-button {
+  @include main-button(.5vw, .6vw, black, white, 1em);
+}
+
+#login-button:hover {
+  @include button-hover($light-blue, black);
+}
+
+#welcome-container {
+  margin-top: 15%;
+}
