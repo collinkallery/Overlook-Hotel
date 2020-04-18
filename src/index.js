@@ -34,18 +34,23 @@ Promise.all([userData, roomData, bookingData])
     bookingData = data[2];
   })
   .then(() => {
-    hotel = new Hotel(userData, roomData, bookingData);
+    // hotel = new Hotel(userData, roomData, bookingData);
+    createHotel(userData, roomData, bookingData);
     instantiateAllUsers();
-    matchRoomsToBookings();
     attachImagesToRooms();
     createRoomObjects();
     createBookingObjects();
+    hotel.setUpHotel();
     loadPage();
     console.log('Data Received');
   })
   .catch(error => {
     console.log('Something is amiss with promise all', error)
   });
+
+let createHotel = (userData, roomData, bookingData) => {
+  hotel = new Hotel(userData, roomData, bookingData);
+}
 
 let instantiateAllUsers = () => {
   userData.forEach(user => {
@@ -85,14 +90,16 @@ function signIntoOverlook() {
   if ($('#username-input').val().includes('customer')) {
     hotel.setUpCustomer($('#username-input').val())
   }
-  // hotel.setUpCustomer($('#username-input').val());
-  // domUpdates.showCustomerPage()
-
-
 }
 
 $('#view-more-past-trips-button').click(function() {
   $('#past-reservations-container div:hidden').slice(0, 5).slideDown();
+});
+
+$('#all-guests-container').on('click', 'button', function(event) {
+  console.log('hiiiiii', $(event.target).parent().parent().attr('id'));
+  domUpdates.expandSpecificGuestInfo(hotel.findSpecificUserById($(event.target).parent().parent().attr('id')))
+  hotel.findSpecificUserById($(event.target).parent().parent().attr('id'));
 });
 
 function matchRoomsToBookings() {
