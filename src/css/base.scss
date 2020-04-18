@@ -100,30 +100,6 @@ body {
   margin-bottom: 3vw;
 }
 
-.booking-input {
-  display: inline-block;
-  width: 20%;
-  margin: .5vw;
-  padding: .7vw;
-  font-size: .7em;
-  border: 1px solid black;
-  border-radius: 7px;
-  font-weight: 400;
-  font-style: italic;
-}
-
-#search-dates-button {
-  margin: .5vw;
-  padding: .4vw;
-  border: 1px solid black;
-  border-radius: 7px;
-  letter-spacing: 0;
-  background-color: white;
-  color: black;
-  font-size: 1em;
-  font-family: 'Cardo', serif;
-}
-
 #search-dates-button:hover {
   background-color: #DEFCFF;
   color: black;
@@ -155,7 +131,6 @@ body {
   background-position: center;
   background-size: cover;
   height: 90%;
-  display: flex;
   flex-direction: row;
 }
 
@@ -284,21 +259,23 @@ body {
   border: 3px solid black;
 }
 
-#manager-search-dates-button {
-  margin: .5vw;
-  padding: .4vw;
+.manager-search-dates-button {
+  align-self: center;
+  width: 50%;
+  margin: .2vw;
+  padding: .2vw;
   border: 1px solid black;
   border-radius: 7px;
   letter-spacing: 0;
-  background-color: white;
-  color: black;
-  font-size: 1em;
+  background-color: black;
+  color: white;
+  font-size: .8em;
   font-family: 'Cardo', serif;
 }
 
-#manager-search-dates-button:hover {
-  background-color: #DEFCFF;
-  color: black;
+.manager-search-dates-button:hover {
+  background-color: #5D5D5D;
+  color: white;
   cursor: pointer;
 }
 
@@ -393,4 +370,31 @@ body {
   width: 2vw;
   height: 2vw;
   background-color: #DEFCFF;
+}
+
+.specific-guest-card {
+  background-color: #DEFCFF;
+  padding: .7vw;
+  color: black;
+  margin: .7vw;
+  font-size: .8em;
+  border-radius: 5px;
+}
+
+.specific-guest-booking-container {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+}
+
+.specific-booking-input {
+  display: block;
+  width: 70%;
+  margin: .5vw;
+  padding: .7vw;
+  font-size: .7em;
+  border: 1px solid black;
+  border-radius: 7px;
+  font-weight: 400;
+  font-style: italic;
 }
