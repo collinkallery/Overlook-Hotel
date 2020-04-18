@@ -1,23 +1,24 @@
+//
 * {
   font-family: 'Raleway', sans-serif;
 }
-
+//
 html {
   width: 100%;
   height: 100%;
 }
-
+//
 body {
   width: 100%;
   height: 100%;
 }
-
+//
 #banner {
   text-align: center;
   height: 10%;
   text-transform: uppercase;
 }
-
+//
 #login-page {
   text-align: center;
   height: 90%;
@@ -25,12 +26,12 @@ body {
   background-position: center;
   background-size: cover;
 }
-
+//
 #login-form {
   display: flex;
   flex-direction: column;
 }
-
+//
 .login-input {
   align-self: center;
   width: 80%;
@@ -41,15 +42,14 @@ body {
   border-radius: 7px;
   font-weight: 400;
   font-style: italic;
-
 }
-
+//
 .login-input:hover,
 .login-input:focus {
   background-color: #EAEAEA;
   color: black;
 }
-
+//
 #login-button {
   align-self: center;
   width: 50%;
@@ -63,24 +63,24 @@ body {
   font-size: 1em;
   font-family: 'Cardo', serif;
 }
-
+//
 #login-button:hover {
   background-color: #DEFCFF;
   color: black;
   cursor: pointer;
 }
-
+//
 #welcome-container {
   margin-top: 15%;
 }
-
+//
 #customer-page {
   background-image: url(https://images.unsplash.com/photo-1567491634123-460945ea86dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80);
   background-position: center;
   background-size: cover;
   height: 90%;
 }
-
+//
 #customer-page-container {
   background-color: black;
   opacity: 90%;
@@ -93,19 +93,19 @@ body {
   border: 4px solid white;
   margin-top: .5vw;
 }
-
+//
 #customer-booking-container {
   text-align: center;
   margin-top: 3vw;
   margin-bottom: 3vw;
 }
-
+//
 #search-dates-button:hover {
   background-color: #DEFCFF;
   color: black;
   cursor: pointer;
 }
-
+//
 .welcome-user {
   color: black;
   font-size: 1.5em;
@@ -117,7 +117,7 @@ body {
   opacity: 80%;
   border-radius: 10px;
 }
-
+//
 #usernamne-header {
   color: #DEFCFF;
   font-size: 2.5em;
@@ -125,7 +125,7 @@ body {
   margin-right: 40%;
   margin-top: 0;
 }
-
+//
 #manager-page {
   background-image: url(https://images.unsplash.com/photo-1482635334133-de0ee55e5864?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80);
   background-position: center;
@@ -133,7 +133,7 @@ body {
   height: 90%;
   flex-direction: row;
 }
-
+//
 #manager-page-booking-container {
   background-color: black;
   opacity: 85%;
@@ -147,7 +147,7 @@ body {
   padding: 1.5vw 1vw 1.5vw 1vw;
   overflow: scroll;
 }
-
+//
 #manager-page-revenue-container {
   background-color: black;
   opacity: 85%;
@@ -159,7 +159,7 @@ body {
   border-radius: .5vw;
   padding: 1.5vw 1vw 1.5vw 1vw;
 }
-
+//
 #manager-page-reservations-container {
   background-color: black;
   opacity: 85%;
@@ -172,44 +172,34 @@ body {
   padding: 1.5vw 1vw 1.5vw 1vw;
   overflow: scroll;
 }
-
-// #revenue-and-reservations {
-//   display: flex;
-//   flex-direction: row;
-//   width: 100%;
-//   height: 70%;
-//   align-items: center;
-//   justify-content: center;
 //
-// }
-
 .flex {
   display: flex;
   align-items: center;
   // justify-content: center;
   flex-direction: column;
 }
-
+//
 .hide {
   display: none;
 }
-
+//
 #past-reservations-container {
   display: flex;
   flex-direction: column;
   // height: 20em;
   // overflow: scroll;
 }
-
+//
 #future-reservations-container {
   display: flex;
   flex-direction: column;
 }
-
+//
 #past-reservations-container div:nth-child(n+5) {
   display: none;
 }
-
+//
 .trip-card {
   background-color: #DEFCFF;
   color: black;
@@ -219,18 +209,18 @@ body {
   align-self: center;
   border: 2px solid black;
 }
-
+//
 .trip-header {
   text-align: center;
   border-bottom: 3px solid black;
   padding-bottom: 1vw;
 }
-
+//
 .reservation-info {
   border: 2px solid #DEFCFF;
   padding: 1vw;
 }
-
+//
 #view-more-past-trips-button {
   margin: .5vw;
   padding: .4vw;
@@ -243,22 +233,22 @@ body {
   font-family: 'Cardo', serif;
   text-align: center;
 }
-
+//
 #view-more-past-trips-button:hover {
   background-color: #DEFCFF;
   color: black;
   cursor: pointer;
 }
-
+//
 .room-details-p {
   font-size: .8em;
 }
-
+//
 .room-image {
   width: 25vw;
   border: 3px solid black;
 }
-
+//
 .manager-search-dates-button {
   align-self: center;
   width: 50%;
@@ -272,28 +262,28 @@ body {
   font-size: .8em;
   font-family: 'Cardo', serif;
 }
-
+//
 .manager-search-dates-button:hover {
   background-color: #5D5D5D;
   color: white;
   cursor: pointer;
 }
-
+//
 .manager-booking-header {
   margin: 0;
   padding: 0;
   border-bottom: 2px solid #DEFCFF;
 }
-
+//
 #booking-input-container {
   padding: 1vw;
 }
-
+//
 #search-customer-input-container {
   display: flex;
   justify-content: center;
 }
-
+//
 .search-customer-input {
   display: inline-block;
   width: 90%;
@@ -305,23 +295,23 @@ body {
   font-weight: 400;
   font-style: italic;
 }
-
+//
 .capitalize {
   text-transform: capitalize;
 }
-
+//
 .reservation-card {
   background-color: #DEFCFF;
   padding: .2vw 2.5vw;
   color: black;
   margin: 2vw 3vw;
 }
-
+//
 .reservation-card-name {
   padding-bottom: .5vw;
   border-bottom: 2px solid black;
 }
-
+//
 .cancel-reservation-button {
   align-self: center;
   width: 50%;
@@ -335,13 +325,13 @@ body {
   font-size: .8em;
   font-family: 'Cardo', serif;
 }
-
+//
 .cancel-reservation-button:hover {
   background-color: #5D5D5D;
   color: white;
   cursor: pointer;
 }
-
+//
 .guest-card {
   background-color: #DEFCFF;
   padding: .3vw;
@@ -352,26 +342,26 @@ body {
   flex-direction: row;
   border-radius: 5px;
 }
-
+//
 .guest-card-name {
   margin: .3vw;
   padding: .2vw;
   display: block;
 }
-
+//
 .expand-guest-info-button {
   height: 100%;
   background-color: #DEFCFF;
   border: none;
   margin-left: auto;
 }
-
+//
 .guest-info-image {
   width: 2vw;
   height: 2vw;
   background-color: #DEFCFF;
 }
-
+//
 .specific-guest-card {
   background-color: #DEFCFF;
   padding: .7vw;
@@ -380,13 +370,13 @@ body {
   font-size: .8em;
   border-radius: 5px;
 }
-
+//
 .specific-guest-booking-container {
   display: flex;
   flex-direction: column;
   // align-items: center;
 }
-
+//
 .specific-booking-input {
   display: block;
   width: 70%;
