@@ -65,7 +65,8 @@ let createRoomObjects = () => {
       'roomType': room.roomType,
       'bidet': room.bidet,
       'bedSize': room.bedSize,
-      'numBeds': room.numBeds
+      'numBeds': room.numBeds,
+      'costPerNight': room.costPerNight
     }
     hotel.allRooms.push(roomObject);
   })
