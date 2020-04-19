@@ -5,7 +5,7 @@
 }
 
 #manager-page-booking-container {
-  @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+  @include main-block-container(30% /*property*/, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
 }
 
 #manager-page-revenue-container {
