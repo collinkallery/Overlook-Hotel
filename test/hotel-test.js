@@ -3,6 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const spies = require("chai-spies");
 chai.use(spies);
+let todayDate = Number('20200211');
 
 import Hotel from '../src/hotel';
 import Manager from '../src/manager';
@@ -190,7 +191,7 @@ describe('Hotel', function() {
     booking6 = {
       'id': '5fwrgu4i7k55hl6v3',
       'userID': 3,
-      'date': '2020/02/07',
+      'date': '2020/02/11',
       'roomNumber': 23,
       'roomType': 'residential suite',
       'bidet': false,
@@ -266,7 +267,7 @@ describe('Hotel', function() {
       {
         id: '5fwrgu4i7k55hl6v3',
         userID: 3,
-        date: '2020/02/07',
+        date: '2020/02/11',
         roomNumber: 23,
         roomType: 'residential suite',
         bidet: false,
@@ -349,7 +350,7 @@ describe('Hotel', function() {
     hotel.matchNamesToBookings();
     hotel.sortAllBookings();
     hotel.disperseTrips();
-    hotel.organizeTripsByTodaysDate();
+    hotel.organizeTripsByTodaysDate(todayDate);
     expect(hotel.guests[0].pastTrips).to.deep.equal([{
       id: '5fwrgu4i7k55hl6x8',
       userID: 1,
@@ -381,18 +382,48 @@ describe('Hotel', function() {
     expect(hotel.findSpecificUserById(1)).to.equal(hotel.guests[0]);
     expect(hotel.findSpecificUserById(3)).to.equal(hotel.guests[2]);
   });
-  it('should calculate the revenue for today', function() {
-
+  it('should find all the bookings for today', function() {
+    hotel.findTodaysBookings(todayDate);
+    expect(hotel.todaysBookings).to.deep.equal([{
+      'id': '5fwrgu4i7k55hl6vw',
+      'userID': 2,
+      'date': '2020/02/11',
+      'roomNumber': 9,
+      'roomType': 'single room',
+      'bidet': true,
+      'bedSize': 'queen',
+      'numBeds': 1,
+      'costPerNight': 200.39,
+      'roomServiceCharges': []
+    }, {
+      'id': '5fwrgu4i7k55hl6v3',
+      'userID': 3,
+      'date': '2020/02/11',
+      'roomNumber': 23,
+      'roomType': 'residential suite',
+      'bidet': false,
+      'bedSize': 'queen',
+      'numBeds': 2,
+      'costPerNight': 176.36,
+      'roomServiceCharges': []
+    }])
   });
-  it('should calculate the revenue for the last week', function() {
-
+  it('should calculate the revenue for today', function() {
+    hotel.findTodaysBookings(todayDate);
+    hotel.calculateRevenueToday(todayDate);
+    expect(hotel.todayRevenue).to.deep.equal(376.75);
   });
   it('should calculate the revenue for all time', function() {
-
+    hotel.calculateRevenueAllTime();
+    expect(hotel.allTimeRevenue).to.deep.equal(1650.46);
   });
-  it('should calculate the percentage of rooms available today', function() {
-
+  it('should calculate the percentage of rooms booked today', function() {
+    hotel.calculatePercentageOfRoomsBookedToday(todayDate);
+    expect(hotel.percentOccupiedToday).to.deep.equal(33);
   });
+  it('should find the rooms that are available for today', function() {
+    
+  })
   it('should set up the DOM for the manager', function() {
     hotel.setUpManager();
     expect(domUpdates.showManagementPage).to.have.been.called(1);
