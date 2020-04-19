@@ -422,7 +422,41 @@ describe('Hotel', function() {
     expect(hotel.percentOccupiedToday).to.deep.equal(33);
   });
   it('should find the rooms that are available for today', function() {
-    
+    hotel.findTodaysBookings(todayDate);
+    hotel.findRoomsAvailableToday(todayDate);
+    expect(hotel.roomsAvailableToday).to.deep.equal([{
+        number: 12,
+        roomType: 'single room',
+        bidet: false,
+        bedSize: 'twin',
+        numBeds: 2,
+        costPerNight: 172.09
+      },
+      {
+        number: 20,
+        roomType: 'residential suite',
+        bidet: false,
+        bedSize: 'queen',
+        numBeds: 1,
+        costPerNight: 343.95
+      },
+      {
+        number: 18,
+        roomType: 'junior suite',
+        bidet: false,
+        bedSize: 'king',
+        numBeds: 2,
+        costPerNight: 496.41
+      },
+      {
+        number: 8,
+        roomType: 'junior suite',
+        bidet: false,
+        bedSize: 'king',
+        numBeds: 1,
+        costPerNight: 261.26
+      }
+    ])
   })
   it('should set up the DOM for the manager', function() {
     hotel.setUpManager();
