@@ -14,6 +14,7 @@ class Hotel {
     this.allBookings = [];
     this.todaysBookings = [];
     this.roomsAvailableToday = [];
+    this.roomsUnavailableToday = [];
   }
   setUpHotel(todayDate) {
     this.matchNamesToBookings();
@@ -24,7 +25,7 @@ class Hotel {
     this.calculateRevenueToday(todayDate);
     this.calculateRevenueAllTime();
     this.calculatePercentageOfRoomsBookedToday(todayDate);
-    this.findRoomsAvailableToday(todayDate);
+    this.findRoomsAvailableToday();
   }
   setUpCustomer(username) {
     let chosenUser = this.findSpecificUserByUsername(username);
@@ -34,8 +35,11 @@ class Hotel {
   }
   setUpManager() {
     domUpdates.showManagementPage();
-    domUpdates.displayAllReservations(this.allBookings);
+    domUpdates.displayTodayReservations(this.todaysBookings);
     domUpdates.displayAllGuests(this.guests);
+    domUpdates.displayPercentageOccupiedToday(this.percentOccupiedToday);
+    domUpdates.displayRoomsAvailableToday(this.roomsAvailableToday);
+    domUpdates.displayRevenue(this.todayRevenue, this.allTimeRevenue);
   }
   findSpecificUserByUsername(username) {
     let chosenUser = this.guests.find(guest => username === guest.username);
@@ -89,14 +93,14 @@ class Hotel {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.todayRevenue = todayRevenue;
+    this.todayRevenue = todayRevenue.toFixed(2);
   }
   calculateRevenueAllTime() {
     let allTimeRevenue = this.allBookings.reduce((acc, booking) => {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.allTimeRevenue = allTimeRevenue;
+    this.allTimeRevenue = allTimeRevenue.toFixed(2);
   }
   calculatePercentageOfRoomsBookedToday(todayDate) {
     let roomsOccupied = this.allBookings.reduce((acc, booking) => {
@@ -109,15 +113,14 @@ class Hotel {
     let percentOccupied = Math.floor((roomsOccupied / this.allRooms.length) * 100);
     this.percentOccupiedToday = percentOccupied;
   }
-  findRoomsAvailableToday(todayDate) {
-    let unoccupiedRooms = this.allBookings.filter(booking => {
-      let date = Number(booking.date.split('/').join(''));
-      return (date != todayDate);
+  findRoomsAvailableToday() {
+    this.allRooms.forEach(room => {
+      this.roomsAvailableToday.push(room);
     })
-    unoccupiedRooms.map(openRoom => {
-      this.allRooms.forEach(room => {
-        if (openRoom.roomNumber === room.number) {
-          this.roomsAvailableToday.push(room);
+    this.roomsAvailableToday.forEach(room => {
+      this.todaysBookings.forEach(booking => {
+        if (room.number === booking.roomNumber) {
+          this.roomsAvailableToday.splice(this.roomsAvailableToday.indexOf(room), 1);
         }
       })
     })
