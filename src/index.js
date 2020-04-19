@@ -10,7 +10,8 @@ let userData;
 let roomData;
 let bookingData;
 let hotel;
-let todayDate = Moment().format('YYYY/MM/DD');
+let todayDate = Number(Moment().format('YYYY/MM/DD').split('/').join(''));
+
 
 userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
   .then(data => data.json())
@@ -39,7 +40,7 @@ Promise.all([userData, roomData, bookingData])
     attachImagesToRooms();
     createRoomObjects();
     createBookingObjects();
-    hotel.setUpHotel();
+    hotel.setUpHotel(todayDate);
     loadInitialDom();
     console.log('Data Received');
   })
@@ -65,7 +66,8 @@ let createRoomObjects = () => {
       'roomType': room.roomType,
       'bidet': room.bidet,
       'bedSize': room.bedSize,
-      'numBeds': room.numBeds
+      'numBeds': room.numBeds,
+      'costPerNight': room.costPerNight
     }
     hotel.allRooms.push(roomObject);
   })

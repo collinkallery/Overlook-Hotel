@@ -25,21 +25,9 @@ class User {
     // method that shows a user all of their
     // past trips
   }
-  viewAmountSpent() {
+  calculateAmountSpent() {
     // method that calculates the total amount
     // of money spent on all booked trips
-  }
-  organizeTrips() {
-    this.allBookings.forEach(trip => {
-      let date = Number(trip.date.split('/').join(''));
-      if (date > todayDate) {
-        this.upcomingTrips.push(trip)
-      } else {
-        this.pastTrips.push(trip);
-      }
-    })
-    domUpdates.displayPastTrips(this.pastTrips);
-    domUpdates.displayUpcomingTrips(this.upcomingTrips);
   }
 }
 
