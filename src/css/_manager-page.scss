@@ -10,6 +10,7 @@
 
 #manager-page-revenue-container {
   @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+  @include flex(column);
 }
 
 #manager-page-reservations-container {
@@ -96,4 +97,23 @@
 .specific-booking-input {
   @include input-styling(70%, .5vw, .7vw, .7em);
   display: block;
+}
+
+.room-available-card {
+  @include card-styling(.3vw, .9em, .3vw);
+  width: 70%;
+  margin: .5vw auto;
+  text-align: center;
+}
+
+#current-revenue-container {
+  @include card-styling(3vw, 1.3em, 5vw 1vw 1vw 1vw);
+  align-self: center;
+  @include flex(column);
+}
+
+.revenue-stat {
+  font-size: 2.5em;
+  text-align: center;
+
 }
