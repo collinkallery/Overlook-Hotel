@@ -20,6 +20,11 @@ class Hotel {
     this.sortAllBookings();
     this.disperseTrips();
     this.organizeTripsByTodaysDate(todayDate);
+    this.findTodaysBookings(todayDate);
+    this.calculateRevenueToday(todayDate);
+    this.calculateRevenueAllTime();
+    this.calculatePercentageOfRoomsBookedToday(todayDate);
+    this.findRoomsAvailableToday(todayDate);
   }
   setUpCustomer(username) {
     let chosenUser = this.findSpecificUserByUsername(username);
@@ -31,6 +36,27 @@ class Hotel {
     domUpdates.showManagementPage();
     domUpdates.displayAllReservations(this.allBookings);
     domUpdates.displayAllGuests(this.guests);
+  }
+  findSpecificUserByUsername(username) {
+    let chosenUser = this.guests.find(guest => username === guest.username);
+    return chosenUser;
+  }
+  findSpecificUserById(id) {
+    let chosenUser = this.guests.find(guest => id == guest.id);
+    return chosenUser;
+  }
+  matchNamesToBookings() {
+    this.allBookings.map(booking => {
+      this.guests.forEach(guest => {
+        if (booking.userID === guest.id) {
+          booking.name = guest.name;
+        }
+      })
+    })
+  }
+  sortAllBookings() {
+    let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
+    sortedTrips = this.allBookings;
   }
   disperseTrips() {
     this.guests.forEach(guest => {
@@ -49,14 +75,6 @@ class Hotel {
         }
       })
     })
-  }
-  findSpecificUserByUsername(username) {
-    let chosenUser = this.guests.find(guest => username === guest.username);
-    return chosenUser;
-  }
-  findSpecificUserById(id) {
-    let chosenUser = this.guests.find(guest => id == guest.id);
-    return chosenUser;
   }
   findTodaysBookings(todayDate) {
     this.allBookings.filter(booking => {
@@ -100,19 +118,6 @@ class Hotel {
       this.allRooms.forEach(room => {
         if (openRoom.roomNumber === room.number) {
           this.roomsAvailableToday.push(room);
-        }
-      })
-    })
-  }
-  sortAllBookings() {
-    let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
-    sortedTrips = this.allBookings;
-  }
-  matchNamesToBookings() {
-    this.allBookings.map(booking => {
-      this.guests.forEach(guest => {
-        if (booking.userID === guest.id) {
-          booking.name = guest.name;
         }
       })
     })
