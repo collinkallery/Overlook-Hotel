@@ -1,8 +1,5 @@
 import domUpdates from './domUpdates'
 var Moment = require('moment');
-// let todayDate = Number(Moment().format('YYYY/MM/DD').split('/').join(''));
-
-
 
 class Hotel {
   constructor(userData, roomData, bookingData) {
@@ -16,6 +13,7 @@ class Hotel {
     this.guests = [];
     this.allBookings = [];
     this.todaysBookings = [];
+    this.roomsAvailableToday = [];
   }
   setUpHotel(todayDate) {
     this.matchNamesToBookings();
@@ -92,6 +90,19 @@ class Hotel {
     }, 0);
     let percentOccupied = Math.floor((roomsOccupied / this.allRooms.length) * 100);
     this.percentOccupiedToday = percentOccupied;
+  }
+  findRoomsAvailableToday(todayDate) {
+    let unoccupiedRooms = this.allBookings.filter(booking => {
+      let date = Number(booking.date.split('/').join(''));
+      return (date != todayDate);
+    })
+    unoccupiedRooms.map(openRoom => {
+      this.allRooms.forEach(room => {
+        if (openRoom.roomNumber === room.number) {
+          this.roomsAvailableToday.push(room);
+        }
+      })
+    })
   }
   sortAllBookings() {
     let sortedTrips = this.allBookings.sort((a, b) => new Moment(b.date).format('YYYYMMDD') - new Moment(a.date).format('YYYYMMDD'))
