@@ -68,9 +68,9 @@ let domUpdates = {
         </div>`)
     })
   },
-  displayAllReservations(allReservations) {
-    allReservations.forEach(reservation => {
-      $('#manager-page-reservations-container').append(`
+  displayTodayReservations(todaysBookings) {
+    todaysBookings.forEach(reservation => {
+      $('#today-reservations-container').append(`
         <div class="reservation-card">
           <h3 class="reservation-card-name">Upcoming Reservation for ${reservation.name}</h3>
           <section class="reservation-details-container">
@@ -86,6 +86,25 @@ let domUpdates = {
           <button class="cancel-reservation-button">Cancel Reservation</button>
         </div>`)
     })
+  },
+  displayPercentageOccupiedToday(percent) {
+    $('#percent-occupied-today').text(`OVERLOOK is ${percent}% booked today`);
+  },
+  displayRoomsAvailableToday(roomsAvailable) {
+    roomsAvailable.forEach(room => {
+      $('#rooms-available-today-container').append(`
+        <div class="room-available-card">
+          <p class="capitalize">Room Number ${room.number}, ${room.roomType}</p>
+        </div>`)
+    })
+  },
+  displayRevenue(revenueToday, revenueAllTime) {
+    $('#current-revenue-container').html(`
+      <p class="revenue-details">Total revenue accrued over the past 24 hours:</p>
+      <span class="revenue-stat">${revenueToday}</span>
+      <p class="revenue-details">Total revenue since OVERLOOK's initial opening:</p>
+      <span class="revenue-stat">${revenueAllTime}</span>
+    `)
   },
   displayAllGuests(guests) {
     guests.forEach(guest => {
