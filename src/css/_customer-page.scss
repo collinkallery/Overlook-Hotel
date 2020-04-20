@@ -58,6 +58,10 @@
   @include welcome-user-styling;
 }
 
+#cust-id {
+  @include welcome-user-styling;
+}
+
 #past-reservations-container {
   @include flex(column);
 }
@@ -121,4 +125,8 @@
 
 .book-reservation-button:hover {
   @include button-hover($grey, white);
+}
+
+#booking-confirmation-card {
+  @include card-styling(2vw, 1em, 1.3vw);
 }

@@ -13,11 +13,14 @@ let domUpdates = {
     $('#banner').text('Overlook Hotel Management')
   },
 
-  showCustomerPage(name) {
+  showCustomerPage(name, id) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#manager-page').removeClass('flex').addClass('hide');
     $('#customer-page').removeClass('hide').addClass('flex');
-    $(".welcome-user").text(`Welcome, ${name}`);
+    $(".welcome-user").html(`
+      <div class="welcome-user">
+      Welcome ${name}, UserID: <span id="cust-id">${id}</div>
+      </div>`)
   },
   displayCustomerPastTrips(trips) {
     trips.forEach(trip => {
@@ -95,7 +98,7 @@ let domUpdates = {
           high quality pillow-top beds, a 62-inch flat-screen television,
           a work-space with a desk, and a kitchenette complete with a
           microwave, pre-stocked mini-fridge, and complimentary coffee</p>
-          <button class="book-reservation-button">Book This Room</button>
+          <button id="${room.number}" class="book-reservation-button">Book This Room</button>
         </div>`)
     })
   },
@@ -167,6 +170,18 @@ let domUpdates = {
           <button type="button" class="manager-search-dates-button">Search availability</button>
         </section>
       </div>`);
+  },
+  displayReservationConfirmation(user, date, roomNumber) {
+    $('#customer-available-rooms-container').empty();
+    $('#customer-available-rooms-container').html(`
+      <section id="booking-confirmation-card">
+        <h2>Congratulations, ${user.name}!</h2>
+        <p>Your stay at OVERLOOK for ${date} is now on the books<p>
+        <p>You will be staying in room number ${roomNumber}.</p>
+        <p>A reservation confirmation has been sent directly to your email.</p>
+        <p>If you need to cancel or modify this reservation, please send us an email
+        at reservations@overlook.com We look forward to seeing you!</p>
+      </section>`)
   }
 }
 

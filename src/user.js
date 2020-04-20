@@ -22,9 +22,9 @@ class User {
     domUpdates.displayCustomerPastTrips(this.pastTrips);
     domUpdates.displayCustomerUpcomingTrips(this.upcomingTrips);
     domUpdates.displayCustomerSpendingHistory(this.totalAmountSpent, this.upcomingTripsCost, this.pastTripsCost);
-    domUpdates.showCustomerPage(this.name);
+    domUpdates.showCustomerPage(this.name, this.id);
   }
-  createBooking(userID, date, roomNumber) {
+  createBooking(user, userID, date, roomNumber) {
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
         method: 'POST',
         headers: {
@@ -43,6 +43,7 @@ class User {
       .catch((error) => {
         console.error('Error:', error);
       });
+    domUpdates.displayReservationConfirmation(user, date, roomNumber);
   };
   viewUpcomingTrips() {
     // method that shows a user all of their
