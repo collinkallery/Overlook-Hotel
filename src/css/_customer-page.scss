@@ -104,5 +104,13 @@
 }
 
 .room-image {
-  @include room-image-styling;
+  @include room-image-styling(15vw);
+}
+
+.available-room-card {
+  @include card-styling(2vw, 1em, 1.3vw);
+}
+
+.available-room-image {
+  @include room-image-styling(20vw);
 }
