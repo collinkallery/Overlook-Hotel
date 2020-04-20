@@ -219,6 +219,6 @@ describe('User', function() {
     expect(domUpdates.displayCustomerSpendingHistory).to.have.been.called.with(user.totalAmountSpent, user.upcomingTripsCost, user.pastTripsCost);
 
     expect(domUpdates.showCustomerPage).to.have.been.called(1);
-    expect(domUpdates.showCustomerPage).to.have.been.called.with(user.name);
+    expect(domUpdates.showCustomerPage).to.have.been.called.with(user.name, user.id);
   })
 })
