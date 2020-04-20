@@ -24,17 +24,20 @@
     </section>
   </main>
   <main class="flex" id="customer-page">
-    <h1 class="welcome-user"></h1>
-    <section id="customer-page-container">
-      <h2>Plan your next stay with OVERLOOK:</h2>
-      <section id="customer-booking-container">
+    <!-- <h1 class="welcome-user"></h1> -->
+    <section id="customer-booking-container">
+      <h2 class="customer-header">Plan your next stay with OVERLOOK:</h2>
+      <section id="customer-select-dates-container">
         <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
-            <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
-            <label class="future-date-text" for="departure-date-input">Departure date:<label>
-                <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
-                <button type="button" id="search-dates-button">Search availability</button>
+        <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
+        <label class="future-date-text" for="departure-date-input">Departure date:<label>
+        <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
+        <button type="button" id="customer-search-dates-button">Search availability</button>
       </section>
-      <h2>View your upcoming reservations:</h2>
+      <section id="customer-possible"
+    </section>
+    <section id="customer-trips-container">
+      <h2 class="customer-header">View your upcoming reservations:</h2>
       <section id="future-reservations-container">
         <p class="reservation-info">Please see below for a comprehensive list of all your upcoming stays with
           with OVERLOOK. You will be able to see the date of your upcoming reservation,
@@ -44,7 +47,7 @@
           please include your confirmation code in the email. We look forward to seeing you
           for your upcoming stay here at OVERLOOK!</p>
       </section>
-      <h2>View your past reservations:</h2>
+      <h2 class="customer-header">View your past reservations:</h2>
       <p class="reservation-info">At OVERLOOK, we value your opinion as a guest and hope to hear about your experience.
         Please send us a detailed review at reviews@overlook.com and let us know how your stays
         have been with us. Our staff is here to serve you, so please let us know if there
@@ -56,28 +59,26 @@
         trip in the subject of the email. We look forward to hearing from you! As always, please
         feel free to reach out to customer service with any questions you may have regarding
         past or future trips.</p>
-      <section id="past-reservations-container">
-      </section>
-      <button id="view-more-past-trips-button">Load more trips</button>
+        <section id="past-reservations-container">
+        </section>
+        <button id="view-more-past-trips-button">Load more trips</button>
+    </section>
+    <section id="customer-finances-container">
+      <h2 class="customer-header">Financial History at OVERLOOK:</h2>
     </section>
   </main>
   <main class="flex" id="manager-page">
     <section id="manager-page-booking-container">
-        <h2 class="manager-booking-header">Guest Information & Booking</h2>
-        <div id="search-customer-input-container">
-          <input type="search" class="search-customer-input" placeholder="Search customer name...">
+      <h2 class="manager-booking-header">Guest Information & Booking</h2>
+      <div id="search-customer-input-container">
+        <input type="search" class="manager-search-customer-input" placeholder="Search customer name...">
+      </div>
+      <section id="booking-input-container">
+        <div id="all-guests-container">
         </div>
-        <section id="booking-input-container">
-          <div id="all-guests-container">
-          </div>
-          <div class="hide" id="specific-guest-container">
-          </div>
-          <!-- <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
-          <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
-          <label class="future-date-text" for="departure-date-input">Departure date:<label>
-          <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
-          <button type="button" id="manager-search-dates-button">Search availability</button> -->
-        </section>
+        <div class="hide" id="specific-guest-container">
+        </div>
+      </section>
     </section>
     <section id="manager-page-revenue-container">
       <h2 class="manager-booking-header">Revenue & Sales</h2>
@@ -86,7 +87,7 @@
     </section>
     <section id="manager-page-reservations-container">
       <h2 class="manager-booking-header">Today's Reservations & Rooms Available</h2>
-        <h3 id="percent-occupied-today"></h3>
+      <h3 id="percent-occupied-today"></h3>
       <section id="today-reservations-container">
       </section>
       <h4>The following rooms are available for booking today:</h4>
