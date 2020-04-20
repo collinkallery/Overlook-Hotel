@@ -5,16 +5,16 @@
 }
 
 #manager-page-booking-container {
-  @include main-block-container(30% /*property*/, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+  @include main-block-container;
 }
 
 #manager-page-revenue-container {
-  @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+  @include main-block-container;
   @include flex(column);
 }
 
 #manager-page-reservations-container {
-  @include main-block-container(30%, 80%, 2vw, 1.5vw 1vw 1.5vw 1vw);
+  @include main-block-container;
 }
 
 .manager-search-dates-button {
@@ -40,7 +40,7 @@
   justify-content: center;
 }
 
-.search-customer-input {
+.manager-search-customer-input {
   @include input-styling(90%, 2vw 1vw 1vw 1vw, .6vw, 1em);
   display: inline-block;
 }
