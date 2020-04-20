@@ -107,13 +107,14 @@
 }
 
 #current-revenue-container {
-  @include card-styling(3vw, 1.3em, 5vw 1vw 1vw 1vw);
+  @include card-styling(6vw 2vw, 1.2em, 3vw 1vw 1vw 1vw);
   align-self: center;
+  text-align: center;
   @include flex(column);
 }
 
 .revenue-stat {
-  font-size: 2.5em;
+  font-size: 2em;
   text-align: center;
 
 }

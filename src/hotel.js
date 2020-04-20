@@ -28,9 +28,11 @@ class Hotel {
   }
   setUpCustomer(username) {
     let chosenUser = this.findSpecificUserByUsername(username);
-    domUpdates.displayPastTrips(chosenUser.pastTrips);
-    domUpdates.displayUpcomingTrips(chosenUser.upcomingTrips);
-    domUpdates.showCustomerPage(chosenUser);
+    chosenUser.collectCustomerInformation();
+    // domUpdates.displayCustomerPastTrips(chosenUser.pastTrips);
+    // domUpdates.displayCustomerUpcomingTrips(chosenUser.upcomingTrips);
+    // domUpdates.displayCustomerTotalSpent(chosenUser.amountSpent);
+    // domUpdates.showCustomerPage(chosenUser);
   }
   setUpManager() {
     domUpdates.showManagementPage();
@@ -92,14 +94,14 @@ class Hotel {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.todayRevenue = todayRevenue.toFixed(2);
+    this.todayRevenue = Number(todayRevenue.toFixed(2));
   }
   calculateRevenueAllTime() {
     let allTimeRevenue = this.allBookings.reduce((acc, booking) => {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.allTimeRevenue = allTimeRevenue.toFixed(2);
+    this.allTimeRevenue = Number(allTimeRevenue.toFixed(2));
   }
   calculatePercentageOfRoomsBookedToday(todayDate) {
     let roomsOccupied = this.allBookings.reduce((acc, booking) => {
@@ -123,6 +125,24 @@ class Hotel {
         }
       })
     })
+  }
+  findRoomsAvailableGivenDate(date) {
+    let unavailableRooms = [];
+    let availableRooms = this.allRooms;
+    this.allBookings.filter(booking => {
+      let bookingDate =  Number(booking.date.split('/').join(''));
+      if (bookingDate === date) {
+        unavailableRooms.push(booking);
+      }
+    });
+    unavailableRooms.forEach(closedRoom => {
+      this.allRooms.filter(room => {
+        if (closedRoom.roomNumber === room.number) {
+          availableRooms.splice(availableRooms.indexOf(room), 1)
+        }});
+    })
+    domUpdates.displayAvailableRoomsForCustomer(availableRooms);
+    return availableRooms;
   }
 }
 

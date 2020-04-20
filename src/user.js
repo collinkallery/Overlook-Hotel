@@ -8,10 +8,21 @@ class User {
     this.password = 'overlook2019';
     this.id = user.id;
     this.name = user.name;
-    // this.amountSpent = amountSpent;
+    this.totalAmountSpent = 0;
+    this.upcomingTripsCost = 0;
+    this.pastTripsCost = 0;
     this.pastTrips = [];
     this.upcomingTrips = [];
     this.allBookings = [];
+  }
+  collectCustomerInformation() {
+    this.calculateTotalAmountSpent();
+    this.calculateAmountSpentFutureTrips();
+    this.calculateAmountSpentPastTrips();
+    domUpdates.displayCustomerPastTrips(this.pastTrips);
+    domUpdates.displayCustomerUpcomingTrips(this.upcomingTrips);
+    domUpdates.displayCustomerSpendingHistory(this.totalAmountSpent, this.upcomingTripsCost, this.pastTripsCost);
+    domUpdates.showCustomerPage(this.name);
   }
   createBooking(userID, date, roomNumber) {
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
@@ -41,9 +52,26 @@ class User {
     // method that shows a user all of their
     // past trips
   }
-  calculateAmountSpent() {
-    // method that calculates the total amount
-    // of money spent on all booked trips
+  calculateTotalAmountSpent() {
+    let totalSpent = this.allBookings.reduce((acc, booking) => {
+      acc += booking.costPerNight;
+      return acc;
+    }, 0);
+    this.totalAmountSpent = Number(totalSpent.toFixed(2));
+  }
+  calculateAmountSpentFutureTrips() {
+    let totalSpent = this.upcomingTrips.reduce((acc, booking) => {
+      acc += booking.costPerNight;
+      return acc;
+    }, 0);
+    this.upcomingTripsCost = Number(totalSpent.toFixed(2));
+  }
+  calculateAmountSpentPastTrips() {
+    let totalSpent = this.pastTrips.reduce((acc, booking) => {
+      acc += booking.costPerNight;
+      return acc;
+    }, 0);
+    this.pastTripsCost = Number(totalSpent.toFixed(2));
   }
 }
 

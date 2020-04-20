@@ -13,13 +13,13 @@ let domUpdates = {
     $('#banner').text('Overlook Hotel Management')
   },
 
-  showCustomerPage(user) {
+  showCustomerPage(name) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#manager-page').removeClass('flex').addClass('hide');
     $('#customer-page').removeClass('hide').addClass('flex');
-    $(".welcome-user").text(`Welcome, ${user.name}`);
+    $(".welcome-user").text(`Welcome, ${name}`);
   },
-  displayPastTrips(trips) {
+  displayCustomerPastTrips(trips) {
     trips.forEach(trip => {
       $('#past-reservations-container').append(`
         <div class="trip-card">
@@ -31,9 +31,7 @@ let domUpdates = {
               ${trip.roomType} in room number ${trip.roomNumber} at a nightly
               rate of ${trip.costPerNight} USD. These rooms have ${trip.bedSize}-sized
               beds. Number of beds in your ${trip.roomType}: ${trip.numBeds}.
-              We hope you enjoyed your stay at OVERLOOK. If you have time, please
-              send us a review at reviews@overlook.com - we would love to hear
-              about your stay, and we hope to see you again soon.</p>
+              We hope you enjoyed your stay at OVERLOOK.</p>
               <p>Confirmation code: ${trip.id}</p>
             </section>
           </div>
@@ -43,28 +41,61 @@ let domUpdates = {
         </div>`);
     })
   },
-  displayUpcomingTrips(trips) {
-    trips.forEach(trip => {
-      $('#future-reservations-container').append(`
+  displayCustomerUpcomingTrips(trips) {
+    if (trips.length >= 1) {
+      trips.forEach(trip => {
+        $('#future-reservations-container').append(`
         <div class="trip-card">
           <div class="info-holder">
             <h3 class="trip-header">Upcoming Trip for ${trip.date}</h3>
             <h4>Room Details:</h4>
             <section>
-              <p>You have an upcoming trip reserved at OVERLOOK for ${trip.date}.
+              <p>Upcoming reservation at OVERLOOK for ${trip.date}.
               The room we have reserved for you is a ${trip.roomType}, and you
               will be staying in room number ${trip.roomNumber}. Every ${trip.roomType}
-              has between 900 and 1,100 square feet, high quality pillow-top beds with
-              egyptian cotton sheets, a 62-inch flat-screen television, a work-space
-              with a desk, and a kitchenette complete with a microwave, pre-stocked mini-fridge,
-              and complimentary coffee. Every ${trip.roomType} also offers high-speed
-              internet access and complimentary access to Netflix during your stay.</p>
+              has between 900 and 1,100 square feet, high quality pillow-top beds,
+              a 62-inch flat-screen television, a work-space with a desk, and a kitchenette
+              complete with a microwave, pre-stocked mini-fridge, and complimentary coffee.</p>
               <p>Confirmation code: ${trip.id}</p>
             </section>
           </div>
           <div class="image-holder">
             <img class="room-image" src="${trip.image}">
           </div>
+        </div>`)
+      })
+    } else {
+      $('#future-reservations-container').html(`
+        <p id="no-upcoming-trips-warning">You do not have any upcoming trips with OVERLOOK.
+        If you would like to book a trip, please use the date
+        selector on the left-hand side of the page.</p>`)
+    }
+  },
+  displayCustomerSpendingHistory(totalSpent, futureSpent, pastSpent) {
+    $('#customer-spending-history-container').html(`
+        <h3>Since joining overlook, you have spent a total of:</h3>
+        <h1 class="customer-cost">${totalSpent} USD.</h1>
+        <h3>Your future trips come to a total of:</h3>
+        <h1 class="customer-cost">${futureSpent} USD.</h1>
+        <h3>Your past trips come to a total of:<h3>
+        <h1 class="customer-cost">${pastSpent} USD</h1>`)
+  },
+  displayAvailableRoomsForCustomer(availableRooms) {
+    console.log(availableRooms);
+    $('#customer-available-rooms-container').empty();
+    availableRooms.forEach(room => {
+      $('#customer-available-rooms-container').append(`
+        <div class="available-room-card">
+          <h2>Available: <span class="capitalize">${room.roomType}</span></h2>
+          <img class="available-room-image" src="${room.image}">
+          <p>This room has ${room.bedSize}-sized beds.</p>
+          <p>Number of beds: ${room.numBeds}</p>
+          <h3>Additional Details:</h3>
+          <p>Every <span class="capitalize">${room.roomType}</span> has between 900 and 1,100 square feet,
+          high quality pillow-top beds, a 62-inch flat-screen television,
+          a work-space with a desk, and a kitchenette complete with a
+          microwave, pre-stocked mini-fridge, and complimentary coffee</p>
+          <button class="book-reservation-button">Book This Room</button>
         </div>`)
     })
   },
@@ -101,9 +132,9 @@ let domUpdates = {
   displayRevenue(revenueToday, revenueAllTime) {
     $('#current-revenue-container').html(`
       <p class="revenue-details">Total revenue accrued over the past 24 hours:</p>
-      <span class="revenue-stat">${revenueToday}</span>
+      <span class="revenue-stat">${revenueToday} USD</span>
       <p class="revenue-details">Total revenue since OVERLOOK's initial opening:</p>
-      <span class="revenue-stat">${revenueAllTime}</span>
+      <span class="revenue-stat">${revenueAllTime} USD</span>
     `)
   },
   displayAllGuests(guests) {

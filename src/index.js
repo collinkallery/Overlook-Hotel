@@ -67,7 +67,8 @@ let createRoomObjects = () => {
       'bidet': room.bidet,
       'bedSize': room.bedSize,
       'numBeds': room.numBeds,
-      'costPerNight': room.costPerNight
+      'costPerNight': room.costPerNight,
+      'image': room.image
     }
     hotel.allRooms.push(roomObject);
   })
@@ -101,9 +102,11 @@ $('#all-guests-container').on('click', 'button', function(event) {
   domUpdates.expandSpecificGuestInfo(hotel.findSpecificUserById($(event.target).parent().parent().attr('id')))
 });
 
-// $('#seach-customer-input-container').on('input', function(event) {
-// 
-// })
+$('#customer-search-dates-button').on('click', function() {
+  let arrivalDate = Number($('#arrival-date-input').val().split('-').join(''));
+  // $('#customer-available-rooms-container').empty();
+  hotel.findRoomsAvailableGivenDate(arrivalDate);
+})
 
 function matchRoomsToBookings() {
   let newBookings = []
