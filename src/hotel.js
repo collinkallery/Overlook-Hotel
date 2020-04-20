@@ -28,9 +28,11 @@ class Hotel {
   }
   setUpCustomer(username) {
     let chosenUser = this.findSpecificUserByUsername(username);
-    domUpdates.displayPastTrips(chosenUser.pastTrips);
-    domUpdates.displayUpcomingTrips(chosenUser.upcomingTrips);
-    domUpdates.showCustomerPage(chosenUser);
+    chosenUser.collectCustomerInformation();
+    // domUpdates.displayCustomerPastTrips(chosenUser.pastTrips);
+    // domUpdates.displayCustomerUpcomingTrips(chosenUser.upcomingTrips);
+    // domUpdates.displayCustomerTotalSpent(chosenUser.amountSpent);
+    // domUpdates.showCustomerPage(chosenUser);
   }
   setUpManager() {
     domUpdates.showManagementPage();
@@ -123,6 +125,24 @@ class Hotel {
         }
       })
     })
+  }
+  findRoomsAvailableGivenDate(date) {
+    let unavailableRooms = [];
+    let availableRooms = this.allRooms;
+    this.allBookings.filter(booking => {
+      let bookingDate =  Number(booking.date.split('/').join(''));
+      if (bookingDate === date) {
+        unavailableRooms.push(booking);
+      }
+    });
+    unavailableRooms.forEach(closedRoom => {
+      this.allRooms.filter(room => {
+        if (closedRoom.roomNumber === room.number) {
+          availableRooms.splice(availableRooms.indexOf(room), 1)
+        }});
+    })
+    domUpdates.displayAvailableRoomsForCustomer(availableRooms);
+    return availableRooms;
   }
 }
 
