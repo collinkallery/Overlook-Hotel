@@ -16,6 +16,20 @@
   @include main-block-container;
 }
 
+#customer-spending-history-container {
+  @include card-styling(1vw, 1em, 3vw 1vw 1vw 1vw);
+  text-align: center;
+}
+
+#no-upcoming-trips-warning {
+  @include card-styling(1vw, 1em, 1vw);
+}
+
+.customer-cost {
+  font-size: 1.7em;
+  // text-align: center;
+}
+
 .customer-header {
   margin: 0;
   padding: 0;
@@ -40,9 +54,9 @@
   @include button-hover($light-blue, black);
 }
 
-// .welcome-user {
-//   @include welcome-user-styling;
-// }
+.welcome-user {
+  @include welcome-user-styling;
+}
 
 #past-reservations-container {
   @include flex(column);
@@ -57,8 +71,8 @@
 }
 
 .trip-card {
-  @include card-styling(2vw 6vw 2vw 6vw, 1em, 1vw);
-  width: 65%;
+  @include card-styling(2vw, 1em, 1.3vw);
+  width: 80%;
   align-self: center;
 }
 
@@ -69,8 +83,11 @@
 }
 
 .reservation-info {
-  border: 2px solid #DEFCFF;
-  padding: 1vw;
+  border: 2px solid $light-blue;
+  padding: 1.5vw;
+  margin: 1.4vw;
+  text-align: center;
+  font-size: .9em;
 }
 
 #view-more-past-trips-button {
