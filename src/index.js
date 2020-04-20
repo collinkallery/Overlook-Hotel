@@ -103,8 +103,8 @@ $('#all-guests-container').on('click', 'button', function(event) {
 });
 
 $('#customer-search-dates-button').on('click', function() {
-  console.log('date', $('#arrival-date-input').val().split('-').join(''));
   let arrivalDate = Number($('#arrival-date-input').val().split('-').join(''));
+  // $('#customer-available-rooms-container').empty();
   hotel.findRoomsAvailableGivenDate(arrivalDate);
 })
 
