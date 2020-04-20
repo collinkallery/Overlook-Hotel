@@ -29,10 +29,6 @@ class Hotel {
   setUpCustomer(username) {
     let chosenUser = this.findSpecificUserByUsername(username);
     chosenUser.collectCustomerInformation();
-    // domUpdates.displayCustomerPastTrips(chosenUser.pastTrips);
-    // domUpdates.displayCustomerUpcomingTrips(chosenUser.upcomingTrips);
-    // domUpdates.displayCustomerTotalSpent(chosenUser.amountSpent);
-    // domUpdates.showCustomerPage(chosenUser);
   }
   setUpManager() {
     domUpdates.showManagementPage();

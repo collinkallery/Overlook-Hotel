@@ -40,6 +40,7 @@ describe('Hotel', function() {
     chai.spy.on(domUpdates, "displayAllGuests", () => {});
     chai.spy.on(domUpdates, "displayPercentageOccupiedToday", () => {});
     chai.spy.on(domUpdates, "displayRoomsAvailableToday", () => {});
+    chai.spy.on(domUpdates, "displayRevenue", () => {});
 
     guest1 = new User({
       'username': 'customer1',
@@ -460,16 +461,23 @@ describe('Hotel', function() {
       }
     ])
   })
-  it('should set up the DOM for the manager', function() {
+  it('should set up the dashboard for the manager', function() {
     hotel.setUpManager();
     expect(domUpdates.showManagementPage).to.have.been.called(1);
+
     expect(domUpdates.displayTodayReservations).to.have.been.called(1);
     expect(domUpdates.displayTodayReservations).to.have.been.called.with(hotel.todaysBookings);
+
     expect(domUpdates.displayAllGuests).to.have.been.called(1);
     expect(domUpdates.displayAllGuests).to.have.been.called.with(hotel.guests);
+
     expect(domUpdates.displayPercentageOccupiedToday).to.have.been.called(1);
     expect(domUpdates.displayPercentageOccupiedToday).to.have.been.called.with(hotel.percentOccupiedToday);
+
     expect(domUpdates.displayRoomsAvailableToday).to.have.been.called(1);
     expect(domUpdates.displayRoomsAvailableToday).to.have.been.called.with(hotel.roomsAvailableToday);
+
+    expect(domUpdates.displayRevenue).to.have.been.called(1);
+    expect(domUpdates.displayRevenue).to.have.been.called.with(hotel.todayRevenue, hotel.allTimeRevenue);
   })
 })
