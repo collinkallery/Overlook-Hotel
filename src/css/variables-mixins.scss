@@ -77,7 +77,7 @@ $cursive-font: 'Cardo', serif;
   flex-direction: $flex-direction;
 }
 
-@mixin room-image-styling {
-  width: 15vw;
+@mixin room-image-styling($width) {
+  width: $width;
   border: 3px solid black;
 }
