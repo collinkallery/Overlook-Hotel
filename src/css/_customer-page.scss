@@ -1,25 +1,48 @@
 #customer-page {
   @include main-page-background;
   background-image: url(https://images.unsplash.com/photo-1567491634123-460945ea86dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80);
-}
-
-#customer-page-container {
-  @include main-block-container(70%, 70%, .5vw, 1.5vw 3.5vw 1vw 3.5vw);
+  flex-direction: row;
 }
 
 #customer-booking-container {
-  text-align: center;
-  margin-top: 3vw;
-  margin-bottom: 3vw;
+  @include main-block-container;
 }
 
-#search-dates-button:hover {
+#customer-trips-container {
+  @include main-block-container;
+}
+
+#customer-finances-container {
+  @include main-block-container;
+}
+
+.customer-header {
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid $light-blue;
+}
+
+#customer-select-dates-container {
+  @include flex(column);
+  margin: 1vw;
+  padding: .5vw;
+}
+
+.booking-input {
+  @include input-styling(80%, .5vw, .7vw, .7em);
+}
+
+#customer-search-dates-button {
+  @include main-button(.2vw, .2vw, white, black, .8em);
+}
+
+#customer-search-dates-button:hover {
   @include button-hover($light-blue, black);
 }
 
-.welcome-user {
-  @include welcome-user-styling;
-}
+// .welcome-user {
+//   @include welcome-user-styling;
+// }
 
 #past-reservations-container {
   @include flex(column);
