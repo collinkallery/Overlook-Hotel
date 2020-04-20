@@ -82,6 +82,7 @@ let domUpdates = {
   },
   displayAvailableRoomsForCustomer(availableRooms) {
     console.log(availableRooms);
+    $('#customer-available-rooms-container').empty();
     availableRooms.forEach(room => {
       $('#customer-available-rooms-container').append(`
         <div class="available-room-card">
@@ -94,6 +95,7 @@ let domUpdates = {
           high quality pillow-top beds, a 62-inch flat-screen television,
           a work-space with a desk, and a kitchenette complete with a
           microwave, pre-stocked mini-fridge, and complimentary coffee</p>
+          <button class="book-reservation-button">Book This Room</button>
         </div>`)
     })
   },
