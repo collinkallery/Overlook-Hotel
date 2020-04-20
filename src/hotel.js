@@ -14,7 +14,6 @@ class Hotel {
     this.allBookings = [];
     this.todaysBookings = [];
     this.roomsAvailableToday = [];
-    this.roomsUnavailableToday = [];
   }
   setUpHotel(todayDate) {
     this.matchNamesToBookings();
