@@ -57,21 +57,21 @@ class User {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.totalAmountSpent = totalSpent.toFixed(2);
+    this.totalAmountSpent = Number(totalSpent.toFixed(2));
   }
   calculateAmountSpentFutureTrips() {
     let totalSpent = this.upcomingTrips.reduce((acc, booking) => {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.upcomingTripsCost = totalSpent.toFixed(2);
+    this.upcomingTripsCost = Number(totalSpent.toFixed(2));
   }
   calculateAmountSpentPastTrips() {
     let totalSpent = this.pastTrips.reduce((acc, booking) => {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.pastTripsCost = totalSpent.toFixed(2);
+    this.pastTripsCost = Number(totalSpent.toFixed(2));
   }
 }
 
