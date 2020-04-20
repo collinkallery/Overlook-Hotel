@@ -101,6 +101,10 @@ $('#all-guests-container').on('click', 'button', function(event) {
   domUpdates.expandSpecificGuestInfo(hotel.findSpecificUserById($(event.target).parent().parent().attr('id')))
 });
 
+// $('#seach-customer-input-container').on('input', function(event) {
+// 
+// })
+
 function matchRoomsToBookings() {
   let newBookings = []
   bookingData.map(booking => {
