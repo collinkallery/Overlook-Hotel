@@ -114,3 +114,11 @@
 .available-room-image {
   @include room-image-styling(20vw);
 }
+
+.book-reservation-button {
+  @include main-button(.2vw, .2vw, black, white, 1em);
+}
+
+.book-reservation-button:hover {
+  @include button-hover($grey, white);
+}
