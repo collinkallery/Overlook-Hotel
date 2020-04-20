@@ -81,7 +81,21 @@ let domUpdates = {
         <h1 class="customer-cost">${pastSpent} USD</h1>`)
   },
   displayAvailableRoomsForCustomer(availableRooms) {
-
+    console.log(availableRooms);
+    availableRooms.forEach(room => {
+      $('#customer-available-rooms-container').append(`
+        <div class="available-room-card">
+          <h2>Available: <span class="capitalize">${room.roomType}</span></h2>
+          <img class="available-room-image" src="${room.image}">
+          <p>This room has ${room.bedSize}-sized beds.</p>
+          <p>Number of beds: ${room.numBeds}</p>
+          <h3>Additional Details:</h3>
+          <p>Every <span class="capitalize">${room.roomType}</span> has between 900 and 1,100 square feet,
+          high quality pillow-top beds, a 62-inch flat-screen television,
+          a work-space with a desk, and a kitchenette complete with a
+          microwave, pre-stocked mini-fridge, and complimentary coffee</p>
+        </div>`)
+    })
   },
   displayTodayReservations(todaysBookings) {
     todaysBookings.forEach(reservation => {
