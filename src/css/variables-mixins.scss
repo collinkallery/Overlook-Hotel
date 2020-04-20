@@ -56,8 +56,7 @@ $cursive-font: 'Cardo', serif;
   color: black;
   font-size: 1.5em;
   font-family: $cursive-font;
-  margin-right: 60%;
-  margin-top: 2vw;
+  margin-top: .2vw;
   background-color: $light-blue;
   padding: .7vw;
   opacity: 80%;
@@ -79,6 +78,6 @@ $cursive-font: 'Cardo', serif;
 }
 
 @mixin room-image-styling {
-  width: 25vw;
+  width: 15vw;
   border: 3px solid black;
 }
