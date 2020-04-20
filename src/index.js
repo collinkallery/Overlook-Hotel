@@ -104,8 +104,14 @@ $('#all-guests-container').on('click', 'button', function(event) {
 
 $('#customer-search-dates-button').on('click', function() {
   let arrivalDate = Number($('#arrival-date-input').val().split('-').join(''));
-  // $('#customer-available-rooms-container').empty();
   hotel.findRoomsAvailableGivenDate(arrivalDate);
+});
+
+$('#customer-available-rooms-container').on('click', 'button', function(event) {
+  let chosenUser = hotel.findSpecificUserById($('#cust-id').text());
+  let chosenDate = $('#arrival-date-input').val().split('-').join('/');
+  let chosenRoom = Number($(event.target).attr('id'));
+  chosenUser.createBooking(chosenUser, chosenUser.id, chosenDate, chosenRoom);
 })
 
 function matchRoomsToBookings() {
