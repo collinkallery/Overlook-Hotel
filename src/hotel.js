@@ -94,14 +94,14 @@ class Hotel {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.todayRevenue = todayRevenue.toFixed(2);
+    this.todayRevenue = Number(todayRevenue.toFixed(2));
   }
   calculateRevenueAllTime() {
     let allTimeRevenue = this.allBookings.reduce((acc, booking) => {
       acc += booking.costPerNight;
       return acc;
     }, 0);
-    this.allTimeRevenue = allTimeRevenue.toFixed(2);
+    this.allTimeRevenue = Number(allTimeRevenue.toFixed(2));
   }
   calculatePercentageOfRoomsBookedToday(todayDate) {
     let roomsOccupied = this.allBookings.reduce((acc, booking) => {
