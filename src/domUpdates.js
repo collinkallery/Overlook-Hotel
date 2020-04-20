@@ -84,7 +84,6 @@ let domUpdates = {
         <h1 class="customer-cost">${pastSpent} USD</h1>`)
   },
   displayAvailableRoomsForCustomer(availableRooms) {
-    console.log(availableRooms);
     $('#customer-available-rooms-container').empty();
     availableRooms.forEach(room => {
       $('#customer-available-rooms-container').append(`
@@ -98,6 +97,19 @@ let domUpdates = {
           high quality pillow-top beds, a 62-inch flat-screen television,
           a work-space with a desk, and a kitchenette complete with a
           microwave, pre-stocked mini-fridge, and complimentary coffee</p>
+          <button id="${room.number}" class="book-reservation-button">Book This Room</button>
+        </div>`)
+    })
+  },
+  displayAvailableRoomsForManager(availableRooms) {
+    $('#manager-available-rooms-container').empty();
+    availableRooms.forEach(room => {
+      $('#manager-available-rooms-container').append(`
+        <div class="available-room-card">
+          <h2>Available: <span class="capitalize">${room.roomType}</span></h2>
+          <img class="manager-available-room-image" src="${room.image}">
+          <p>This room has ${room.bedSize}-sized beds.</p>
+          <p>Number of beds: ${room.numBeds}</p>
           <button id="${room.number}" class="book-reservation-button">Book This Room</button>
         </div>`)
     })
@@ -156,31 +168,41 @@ let domUpdates = {
     $('#all-guests-container').addClass('hide');
     $('#specific-guest-container').removeClass('hide').html(`
       <div class="specific-guest-card">
-        <h3 class="specific-guest-name">${guest.name}</h3>
+        <h3 class="specific-guest-name">${guest.name}, UserID: <span id="manager-cust-id">${guest.id}</span></h3>
         <section class="specific-guest-details-container">
           <p>${guest.name} has been on ${guest.pastTrips.length} trips with OVERLOOK.
           Guest has ${guest.upcomingTrips.length} reservations booked for the future.</p>
         </section>
         <h3 class="specific-guest-booking-header">Create booking for ${guest.name}:</h3>
         <section class="specific-guest-booking-container">
-          <label class="future-date-text" for="arrival-date-input">Arrival date:<label>
-          <input type="date" class="specific-booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
+          <label class="future-date-text" for="manager-arrival-date-input">Arrival date:<label>
+          <input type="date" class="specific-booking-input" id="manager-arrival-date-input" placeholder="mm/dd/yyyy">
           <label class="future-date-text" for="departure-date-input">Departure date:<label>
           <input type="date" class="specific-booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
           <button type="button" class="manager-search-dates-button">Search availability</button>
         </section>
       </div>`);
   },
-  displayReservationConfirmation(user, date, roomNumber) {
+  displayCustomerReservationConfirmation(user, date, roomNumber) {
     $('#customer-available-rooms-container').empty();
     $('#customer-available-rooms-container').html(`
-      <section id="booking-confirmation-card">
+      <section id="customer-booking-confirmation-card">
         <h2>Congratulations, ${user.name}!</h2>
         <p>Your stay at OVERLOOK for ${date} is now on the books<p>
         <p>You will be staying in room number ${roomNumber}.</p>
         <p>A reservation confirmation has been sent directly to your email.</p>
         <p>If you need to cancel or modify this reservation, please send us an email
         at reservations@overlook.com We look forward to seeing you!</p>
+      </section>`)
+  },
+  displayManagerReservationConfirmation(user, date, roomNumber) {
+    $('#manager-available-rooms-container').empty();
+    $('#manager-available-rooms-container').html(`
+      <section id="manager-booking-confirmation-card">
+        <h2>Thank you for utilizing the OVERLOOK Management Portal</h2>
+        <p>Reservation for ${user.name} on ${date} is confirmed</p>
+        <p>A reservation confirmation has been sent to the user's email
+        on file, and OVERLOOK's booking system has been updated.</p>
       </section>`)
   }
 }
