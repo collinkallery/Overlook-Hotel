@@ -116,5 +116,12 @@
 .revenue-stat {
   font-size: 2em;
   text-align: center;
+}
 
+.manager-available-room-image {
+  @include room-image-styling(11vw);
+}
+
+#manager-booking-confirmation-card {
+  @include card-styling(2vw, 1em, 1.3vw);
 }
