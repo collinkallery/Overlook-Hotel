@@ -43,7 +43,7 @@ class User {
       .catch((error) => {
         console.error('Error:', error);
       });
-    domUpdates.displayReservationConfirmation(user, date, roomNumber);
+    domUpdates.displayCustomerReservationConfirmation(user, date, roomNumber);
   };
   viewUpcomingTrips() {
     // method that shows a user all of their
