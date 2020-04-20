@@ -101,9 +101,11 @@ $('#all-guests-container').on('click', 'button', function(event) {
   domUpdates.expandSpecificGuestInfo(hotel.findSpecificUserById($(event.target).parent().parent().attr('id')))
 });
 
-// $('#seach-customer-input-container').on('input', function(event) {
-// 
-// })
+$('#customer-search-dates-button').on('click', function() {
+  console.log('date', $('#arrival-date-input').val().split('-').join(''));
+  let arrivalDate = Number($('#arrival-date-input').val().split('-').join(''));
+  hotel.findRoomsAvailableGivenDate(arrivalDate);
+})
 
 function matchRoomsToBookings() {
   let newBookings = []
