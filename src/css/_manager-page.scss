@@ -64,7 +64,7 @@
 
 .guest-card {
   @include card-styling(.3vw, 1.3em, .7vw);
-  @include flex(row);
+  flex-direction: row;
 }
 
 .guest-card-name {
