@@ -84,16 +84,21 @@ $('#login-button').on('click', (event) => signIntoOverlook());
 let loadInitialDom = () => {
   $('#customer-page').removeClass('flex').addClass('hide');
   $('#manager-page').removeClass('flex').addClass('hide');
+  $('#login-page').removeClass('hide').addClass('flex');
+  $('.logout-button').addClass('hide');
 }
 
 function signIntoOverlook() {
   if ($('#username-input').val().includes('manager')) {
     manager = new Manager();
-    console.log(manager);
     hotel.setUpManager();
+    $('.logout-button').removeClass('hide');
+    $('#username-input').val('');
   }
   if ($('#username-input').val().includes('customer')) {
-    hotel.setUpCustomer($('#username-input').val())
+    hotel.setUpCustomer($('#username-input').val());
+    $('.logout-button').removeClass('hide');
+    $('#username-input').val('');
   }
 }
 
@@ -127,6 +132,14 @@ $('#manager-available-rooms-container').on('click', 'button', function(event) {
   let chosenDate = $('#manager-arrival-date-input').val().split('-').join('/');
   let chosenRoom = Number($(event.target).attr('id'));
   manager.createBooking(chosenUser, chosenUser.id, chosenDate, chosenRoom);
+});
+
+$('.logout-button').on('click', (event) => loadInitialDom());
+
+$('#back-to-all-guests-button').on('click', function() {
+  $('#specific-guest-container').empty();
+  $('#all-guests-container').removeClass('hide');
+  $('#manager-available-rooms-container').empty();
 })
 
 function matchRoomsToBookings() {

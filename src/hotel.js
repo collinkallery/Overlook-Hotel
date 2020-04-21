@@ -21,6 +21,7 @@ class Hotel {
     this.disperseTrips();
     this.organizeTripsByTodaysDate(todayDate);
     this.findTodaysBookings(todayDate);
+    this.distributeFinancialDetails();
     this.calculateRevenueToday(todayDate);
     this.calculateRevenueAllTime();
     this.calculatePercentageOfRoomsBookedToday(todayDate);
@@ -28,7 +29,8 @@ class Hotel {
   }
   setUpCustomer(username) {
     let chosenUser = this.findSpecificUserByUsername(username);
-    chosenUser.collectCustomerInformation();
+    chosenUser.displayOnDashboard();
+    // chosenUser.collectCustomerInformation();
   }
   setUpManager() {
     domUpdates.showManagementPage();
@@ -37,6 +39,11 @@ class Hotel {
     domUpdates.displayPercentageOccupiedToday(this.percentOccupiedToday);
     domUpdates.displayRoomsAvailableToday(this.roomsAvailableToday);
     domUpdates.displayRevenue(this.todayRevenue, this.allTimeRevenue);
+  }
+  distributeFinancialDetails() {
+    this.guests.forEach(guest => {
+      guest.collectCustomerInformation();
+    })
   }
   findSpecificUserByUsername(username) {
     let chosenUser = this.guests.find(guest => username === guest.username);
