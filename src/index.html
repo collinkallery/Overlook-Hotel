@@ -6,6 +6,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
   <title>Overlook</title>
   <link href="https://fonts.googleapis.com/css2?family=Cardo:ital@1&family=Raleway:ital,wght@0,100;1,400&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -34,6 +35,13 @@
         <input type="date" class="booking-input" id="departure-date-input" placeholder="mm/dd/yyyy">
         <button type="button" id="customer-search-dates-button">Search availability</button>
       </section>
+      <select class"room-select" type="text" id="room-filter">
+        <option value="all rooms">All Room Types</option>
+        <option value="residential suite">Residential Suite</option>
+        <option value="suite">Suite</option>
+        <option value="single room">Single Room</option>
+        <option value="junior suite">Junior Suite</option>
+      </select>
       <section id="customer-available-rooms-container">
       </section>
     </section>
@@ -48,9 +56,9 @@
       <p class="reservation-info">Please feel free to send us a detailed review at <br>reviews@overlook.com<br>
         and let us know how your stays have been with us. If you need to reach out us regarding
         a past trip, please send an email to <br>customerservice@overlook.com<br> We look forward to hearing from you!</p>
-        <section id="past-reservations-container">
-        </section>
-        <button id="view-more-past-trips-button">Load more trips</button>
+      <section id="past-reservations-container">
+      </section>
+      <button id="view-more-past-trips-button">Load more trips</button>
     </section>
     <section id="customer-finances-container">
       <h2 class="customer-header">Financial History at OVERLOOK:</h2>
@@ -69,8 +77,16 @@
         </section>
         <section id="specific-guest-container">
         </section>
+        <select class"room-select" type="text" id="room-filter">
+          <option value="all rooms">All Room Types</option>
+          <option value="residential suite">Residential Suite</option>
+          <option value="suite">Suite</option>
+          <option value="single room">Single Room</option>
+          <option value="junior suite">Junior Suite</option>
+        </select>
         <section id="manager-available-rooms-container">
         </section>
+
       </section>
       <button id="back-to-all-guests-button">Back to Guests</button>
     </section>
