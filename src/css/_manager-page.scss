@@ -125,3 +125,22 @@
 #manager-booking-confirmation-card {
   @include card-styling(2vw, 1em, 1.3vw);
 }
+
+.logout-button {
+  @include main-button(.2vw, .2vw, black, white, .5em);
+  width: 10%;
+  position: absolute;
+  left: 90%;
+}
+
+.logout-button:hover {
+  @include button-hover($light-blue, black);
+}
+
+#back-to-all-guests-button {
+  @include main-button(.2vw, .2vw, white, black, 1em);
+}
+
+.back-to-all-guests-button-button:hover {
+  @include button-hover($light-blue, black);
+}
