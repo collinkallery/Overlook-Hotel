@@ -137,3 +137,13 @@ select {
   font-size: 1em;
   background-color: $light-blue;
 }
+
+#refresh-trips-button {
+  @include main-button(.6vw, .2vw, white, black, .5em);
+  width: 25%;
+  margin-left: 37%;
+}
+
+#refresh-trips-button:hover {
+  @include button-hover($light-blue, black);
+}
