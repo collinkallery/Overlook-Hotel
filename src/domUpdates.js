@@ -10,7 +10,7 @@ let domUpdates = {
   showManagementPage(user) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#manager-page').removeClass('hide').addClass('flex');
-    $('#banner').text('Overlook Hotel Management')
+    // $('#banner').text('Overlook Hotel Management')
   },
 
   showCustomerPage(name, id) {
@@ -172,6 +172,7 @@ let domUpdates = {
         <section class="specific-guest-details-container">
           <p>${guest.name} has been on ${guest.pastTrips.length} trips with OVERLOOK.
           Guest has ${guest.upcomingTrips.length} reservations booked for the future.</p>
+          <p>Guest has spent ${guest.totalAmountSpent} since joining OVERLOOK.</p>
         </section>
         <h3 class="specific-guest-booking-header">Create booking for ${guest.name}:</h3>
         <section class="specific-guest-booking-container">
