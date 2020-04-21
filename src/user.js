@@ -19,6 +19,12 @@ class User {
     this.calculateTotalAmountSpent();
     this.calculateAmountSpentFutureTrips();
     this.calculateAmountSpentPastTrips();
+    // domUpdates.displayCustomerPastTrips(this.pastTrips);
+    // domUpdates.displayCustomerUpcomingTrips(this.upcomingTrips);
+    // domUpdates.displayCustomerSpendingHistory(this.totalAmountSpent, this.upcomingTripsCost, this.pastTripsCost);
+    // domUpdates.showCustomerPage(this.name, this.id);
+  }
+  displayOnDashboard() {
     domUpdates.displayCustomerPastTrips(this.pastTrips);
     domUpdates.displayCustomerUpcomingTrips(this.upcomingTrips);
     domUpdates.displayCustomerSpendingHistory(this.totalAmountSpent, this.upcomingTripsCost, this.pastTripsCost);
