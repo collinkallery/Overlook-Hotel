@@ -45,6 +45,7 @@ let domUpdates = {
     })
   },
   displayCustomerUpcomingTrips(trips) {
+    console.log(trips.length);
     if (trips.length >= 1) {
       trips.forEach(trip => {
         $('#future-reservations-container').append(`
@@ -85,9 +86,10 @@ let domUpdates = {
   },
   displayAvailableRoomsForCustomer(availableRooms) {
     $('#customer-available-rooms-container').empty();
+    $('select').css({'display':'block'});
     availableRooms.forEach(room => {
       $('#customer-available-rooms-container').append(`
-        <div class="available-room-card">
+        <div class="available-room-card ${(room.roomType).split(' ').join('')}">
           <h2>Available: <span class="capitalize">${room.roomType}</span></h2>
           <img class="available-room-image" src="${room.image}">
           <p>This room has ${room.bedSize}-sized beds.</p>
@@ -103,9 +105,10 @@ let domUpdates = {
   },
   displayAvailableRoomsForManager(availableRooms) {
     $('#manager-available-rooms-container').empty();
+    $('select').css({'display':'block'});
     availableRooms.forEach(room => {
       $('#manager-available-rooms-container').append(`
-        <div class="available-room-card">
+        <div class="available-room-card ${(room.roomType).split(' ').join('')}">
           <h2>Available: <span class="capitalize">${room.roomType}</span></h2>
           <img class="manager-available-room-image" src="${room.image}">
           <p>This room has ${room.bedSize}-sized beds.</p>
