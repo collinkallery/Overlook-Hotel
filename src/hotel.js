@@ -121,13 +121,14 @@ class Hotel {
     this.allRooms.forEach(room => {
       this.roomsAvailableToday.push(room);
     })
-    this.roomsAvailableToday.forEach(room => {
-      this.todaysBookings.forEach(booking => {
-        if (room.number === booking.roomNumber) {
-          this.roomsAvailableToday.splice(this.roomsAvailableToday.indexOf(room), 1);
-        }
+    this.roomsAvailableToday.slice().reverse()
+      .forEach(room => {
+        this.todaysBookings.forEach(booking => {
+          if (room.number === booking.roomNumber) {
+            this.roomsAvailableToday.splice(this.roomsAvailableToday.indexOf(room), 1)
+          }
+        })
       })
-    })
   }
   findRoomsAvailableGivenDate(date) {
     let unavailableRooms = [];
