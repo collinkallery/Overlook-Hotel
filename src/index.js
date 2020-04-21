@@ -192,6 +192,20 @@ $('select').on('change', function() {
   })
 });
 
+$('.manager-search-customer-input').on('keyup change', function() {
+  let allGuests = Array.from(document.querySelectorAll('.guest-card'));
+  console.log(allGuests);
+  allGuests.forEach(guest => {
+    guest.classList.remove('hide');
+    guest.classList.add('flex')
+    console.log($('.manager-search-customer-input').val());
+    if (!guest.innerText.includes($('.manager-search-customer-input').val())) {
+      guest.classList.remove('flex');
+      guest.classList.add('hide');
+    }
+  })
+})
+
 function matchRoomsToBookings() {
   let newBookings = []
   bookingData.map(booking => {
