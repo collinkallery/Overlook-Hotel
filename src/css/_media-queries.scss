@@ -1,0 +1,63 @@
+@media screen and (min-width: 769px) {
+  // RULES FOR DESKTOP SCREENS
+  #manager-page {
+    flex-direction: row;
+  }
+  #customer-page {
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 768px) {
+  // RULES FOR TABLET SCREENS
+  #manager-page {
+    flex-direction: column;
+  }
+  #customer-page {
+    flex-direction: column;
+  }
+  #manager-page-booking-container {
+    width: 70%;
+    text-align: center;
+  }
+  #manager-page-revenue-container {
+    width: 70%;
+  }
+  #manager-page-reservations-container {
+    width: 70%;
+  }
+  .manager-available-room-image {
+    width: 25vw;
+  }
+  #current-revenue-container {
+    padding: 1vw;
+  }
+  .revenue-stat {
+    font-size: 1.3em;
+  }
+  #customer-booking-container {
+    width: 70%;
+    padding: 4vw;
+  }
+  #customer-trips-container {
+    width: 70%;
+  }
+  #customer-finances-container {
+    width: 70%;
+  }
+  .available-room-image {
+    width: 25vw;
+  }
+  .room-image {
+    width: 27vw;
+  }
+  #customer-select-dates-container {
+    padding: 1vw 4vw;
+  }
+  #customer-available-rooms-container {
+    text-align: center;
+  }
+
+}
+@media screen and (max-width: 414px) {
+  // RULES FOR PHONE SCREENS
+}
