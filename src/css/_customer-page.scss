@@ -130,3 +130,10 @@
 #customer-booking-confirmation-card {
   @include card-styling(2vw, 1em, 1.3vw);
 }
+
+select {
+  display: none;
+  width: 80%;
+  font-size: 1em;
+  background-color: $light-blue;
+}
