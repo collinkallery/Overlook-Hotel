@@ -134,13 +134,63 @@ $('#manager-available-rooms-container').on('click', 'button', function(event) {
   manager.createBooking(chosenUser, chosenUser.id, chosenDate, chosenRoom);
 });
 
-$('.logout-button').on('click', (event) => loadInitialDom());
+$('.logout-button').on('click', function(event) {
+  loadInitialDom();
+  userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+    .then(data => data.json())
+    .then(data => data.users)
+    .catch(error => console.log('userData error'));
+
+  roomData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
+    .then(data => data.json())
+    .then(data => data.rooms)
+    .catch(error => console.log('userData error'));
+
+  bookingData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+    .then(data => data.json())
+    .then(data => data.bookings)
+    .catch(error => console.log('userData error'));
+
+  Promise.all([userData, roomData, bookingData])
+    .then(data => {
+      userData = data[0];
+      roomData = data[1];
+      bookingData = data[2];
+    })
+    .then(() => {
+      createHotel(userData, roomData, bookingData);
+      instantiateAllUsers();
+      attachImagesToRooms();
+      createRoomObjects();
+      createBookingObjects();
+      hotel.setUpHotel(todayDate);
+      loadInitialDom();
+      console.log('Data Received');
+    })
+    .catch(error => {
+      console.log('Something is amiss with promise all', error)
+    });
+});
 
 $('#back-to-all-guests-button').on('click', function() {
   $('#specific-guest-container').empty();
   $('#all-guests-container').removeClass('hide');
   $('#manager-available-rooms-container').empty();
-})
+});
+
+$('select').on('change', function() {
+  let allAvailableRooms = Array.from(document.querySelectorAll('.available-room-card'));
+  let roomType = (this.value).split(' ').join('');
+  allAvailableRooms.forEach(room => {
+    room.classList.remove('hide');
+    if (!room.classList.contains(roomType)) {
+      room.classList.add('hide');
+    }
+    if (this.value === 'all rooms') {
+      room.classList.remove('hide');
+    }
+  })
+});
 
 function matchRoomsToBookings() {
   let newBookings = []
