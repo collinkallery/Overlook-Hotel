@@ -138,6 +138,7 @@ class Hotel {
         }});
     })
     domUpdates.displayAvailableRoomsForCustomer(availableRooms);
+    domUpdates.displayAvailableRoomsForManager(availableRooms);
     return availableRooms;
   }
 }

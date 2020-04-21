@@ -10,6 +10,7 @@ let userData;
 let roomData;
 let bookingData;
 let hotel;
+let manager;
 let todayDate = Number(Moment().format('YYYY/MM/DD').split('/').join(''));
 
 
@@ -87,6 +88,8 @@ let loadInitialDom = () => {
 
 function signIntoOverlook() {
   if ($('#username-input').val().includes('manager')) {
+    manager = new Manager();
+    console.log(manager);
     hotel.setUpManager();
   }
   if ($('#username-input').val().includes('customer')) {
@@ -112,6 +115,18 @@ $('#customer-available-rooms-container').on('click', 'button', function(event) {
   let chosenDate = $('#arrival-date-input').val().split('-').join('/');
   let chosenRoom = Number($(event.target).attr('id'));
   chosenUser.createBooking(chosenUser, chosenUser.id, chosenDate, chosenRoom);
+});
+
+$('#specific-guest-container').on('click', 'button', function(event) {
+  let arrivalDate = Number($('#manager-arrival-date-input').val().split('-').join(''));
+  hotel.findRoomsAvailableGivenDate(arrivalDate);
+});
+
+$('#manager-available-rooms-container').on('click', 'button', function(event) {
+  let chosenUser = hotel.findSpecificUserById($('#manager-cust-id').text())
+  let chosenDate = $('#manager-arrival-date-input').val().split('-').join('/');
+  let chosenRoom = Number($(event.target).attr('id'));
+  manager.createBooking(chosenUser, chosenUser.id, chosenDate, chosenRoom);
 })
 
 function matchRoomsToBookings() {
