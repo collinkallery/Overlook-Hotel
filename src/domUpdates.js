@@ -45,7 +45,6 @@ let domUpdates = {
     })
   },
   displayCustomerUpcomingTrips(trips) {
-    console.log(trips.length);
     if (trips.length >= 1) {
       trips.forEach(trip => {
         $('#future-reservations-container').append(`
