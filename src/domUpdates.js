@@ -158,7 +158,7 @@ let domUpdates = {
   displayAllGuests(guests) {
     guests.forEach(guest => {
       $('#all-guests-container').append(`
-        <div id=${guest.id} class="guest-card">
+        <div id=${guest.id} class="guest-card flex">
           <div class="guest-info">
             <p class="guest-card-name">${guest.name}</p>
             <p class="guest-card-name">UserID: ${guest.id}</p>
