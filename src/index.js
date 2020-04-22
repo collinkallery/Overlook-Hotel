@@ -163,6 +163,9 @@ $('.logout-button').on('click', function(event) {
   $('#future-reservations-container').empty();
   $('#customer-available-rooms-container').empty();
   $('#manager-available-rooms-container').empty();
+  $('#specific-guest-container').empty();
+  $('#specific-guests-trips-container').empty();
+  $('#all-guests-container').removeClass('hide');
   $('select').css({
     'display': 'none'
   });
@@ -292,11 +295,12 @@ $('#back-to-all-guests-button').on('click', function() {
   $('#specific-guest-container').empty();
   $('#all-guests-container').removeClass('hide');
   $('#manager-available-rooms-container').empty();
+  $('#specific-guest-trips-container').empty();
 });
 
 $('#see-guest-trips-button').on('click', function() {
   let chosenUser = hotel.findSpecificUserById($('#manager-cust-id').text())
-  console.log(chosenUser);
+  domUpdates.showSpecificGuestTrips(chosenUser.upcomingTrips);
 })
 
 $('.manager-search-customer-input').on('keyup change', function() {
@@ -312,6 +316,12 @@ $('.manager-search-customer-input').on('keyup change', function() {
     }
   })
 });
+
+$('#specific-guest-trips-container').on('click', 'button', function() {
+  let tripId = Number($(event.target).attr('id'));
+  manager.deleteBooking(tripId);
+  alert(`Booking #${tripId} has successfully been deleted.`)
+})
 
 $('select').on('change', function() {
   let allAvailableRooms = Array.from(document.querySelectorAll('.available-room-card'));
