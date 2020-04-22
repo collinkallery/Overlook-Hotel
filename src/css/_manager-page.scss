@@ -144,3 +144,7 @@
 .back-to-all-guests-button-button:hover {
   @include button-hover($light-blue, black);
 }
+
+#see-guest-trips-button {
+  display: none;
+}

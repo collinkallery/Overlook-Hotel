@@ -136,11 +136,14 @@ let loadInitialDom = () => {
 }
 
 function signIntoOverlook() {
-  if ($('#username-input').val().includes('manager')) {
+  if ($('#username-input').val().includes('manager') && (($('#password-input').val() === 'overlook2019'))) {
     manager = new Manager();
     hotel.setUpManager();
     $('.logout-button').removeClass('hide');
     $('#username-input').val('');
+    $('#password-input').val('');
+  } else {
+    alert('Incorrect username or password. Please try again.');
   }
   if ($('#username-input').val().includes('customer')) {
     if ((hotel.findSpecificUserByUsername($('#username-input').val()) === undefined) || ($('#password-input').val() != 'overlook2019')){
@@ -209,6 +212,7 @@ $('#view-more-past-trips-button').click(function() {
 $('#customer-search-dates-button').on('click', function() {
   let arrivalDate = Number($('#arrival-date-input').val().split('-').join(''));
   hotel.findRoomsAvailableGivenDate(arrivalDate);
+  $('#arrival-date-input').val('');
 });
 
 $('#customer-available-rooms-container').on('click', 'button', function(event) {
@@ -289,6 +293,11 @@ $('#back-to-all-guests-button').on('click', function() {
   $('#all-guests-container').removeClass('hide');
   $('#manager-available-rooms-container').empty();
 });
+
+$('#see-guest-trips-button').on('click', function() {
+  let chosenUser = hotel.findSpecificUserById($('#manager-cust-id').text())
+  console.log(chosenUser);
+})
 
 $('.manager-search-customer-input').on('keyup change', function() {
   let allGuests = Array.from(document.querySelectorAll('.guest-card'));

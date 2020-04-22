@@ -10,9 +10,7 @@ let domUpdates = {
   showManagementPage(user) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#manager-page').removeClass('hide').addClass('flex');
-    // $('#banner').text('Overlook Hotel Management')
   },
-
   showCustomerPage(name, id) {
     $('#login-page').removeClass('flex').addClass('hide');
     $('#manager-page').removeClass('flex').addClass('hide');
@@ -84,10 +82,14 @@ let domUpdates = {
         <h1 class="customer-cost">${pastSpent} USD</h1>`)
   },
   displayAvailableRoomsForCustomer(availableRooms) {
-    $('#customer-available-rooms-container').empty();
-    $('select').css({'display':'block'});
-    availableRooms.forEach(room => {
-      $('#customer-available-rooms-container').append(`
+    console.log(availableRooms);
+    if (availableRooms.length >= 1) {
+      $('#customer-available-rooms-container').empty();
+      $('select').css({
+        'display': 'block'
+      });
+      availableRooms.forEach(room => {
+        $('#customer-available-rooms-container').append(`
         <div class="available-room-card ${(room.roomType).split(' ').join('')}">
           <h2>Available: <span class="capitalize">${room.roomType}</span></h2>
           <img class="available-room-image" src="${room.image}">
@@ -100,11 +102,19 @@ let domUpdates = {
           microwave, pre-stocked mini-fridge, and complimentary coffee</p>
           <button id="${room.number}" class="book-reservation-button">Book This Room</button>
         </div>`)
-    })
+      })
+    } else {
+      $('#customer-available-rooms-container').empty();
+      $('#customer-available-rooms-container').html(`
+        <p class="no-rooms-message">We are so sorry, but there are no rooms available on the selected
+        dates. Please choose another date and try again.`)
+    }
   },
   displayAvailableRoomsForManager(availableRooms) {
     $('#manager-available-rooms-container').empty();
-    $('select').css({'display':'block'});
+    $('select').css({
+      'display': 'block'
+    });
     availableRooms.forEach(room => {
       $('#manager-available-rooms-container').append(`
         <div class="available-room-card ${(room.roomType).split(' ').join('')}">
@@ -168,6 +178,7 @@ let domUpdates = {
   },
   expandSpecificGuestInfo(guest) {
     $('#all-guests-container').addClass('hide');
+    $('#see-guest-trips-button').css({'display':'block'});
     $('#specific-guest-container').removeClass('hide').html(`
       <div class="specific-guest-card">
         <h3 class="specific-guest-name">${guest.name}, UserID: <span id="manager-cust-id">${guest.id}</span></h3>
@@ -186,6 +197,9 @@ let domUpdates = {
         </section>
       </div>`);
   },
+  // showSpecificGuestTrips() {
+  //
+  // };
   displayCustomerReservationConfirmation(user, date, roomNumber) {
     $('#customer-available-rooms-container').empty();
     $('#customer-available-rooms-container').html(`

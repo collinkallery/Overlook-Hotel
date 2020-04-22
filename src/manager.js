@@ -27,8 +27,7 @@ class Manager {
     domUpdates.displayManagerReservationConfirmation(user, date, roomNumber);
   };
   deleteBooking() {
-    // method that allows manager to
-    // delete booking for a customer
+    console.log('deleteReached')
   }
   searchByCustomerName() {
     // method that allows manager to
