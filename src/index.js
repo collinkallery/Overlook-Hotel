@@ -143,9 +143,14 @@ function signIntoOverlook() {
     $('#username-input').val('');
   }
   if ($('#username-input').val().includes('customer')) {
-    hotel.setUpCustomer($('#username-input').val());
-    $('.logout-button').removeClass('hide');
-    $('#username-input').val('');
+    if ((hotel.findSpecificUserByUsername($('#username-input').val()) === undefined) || ($('#password-input').val() != 'overlook2019')){
+      alert('Incorrect username or password. Please try again.')
+    } else {
+      hotel.setUpCustomer($('#username-input').val());
+      $('.logout-button').removeClass('hide');
+      $('#username-input').val('');
+      $('#password-input').val('');
+    }
   }
 }
 
@@ -155,7 +160,9 @@ $('.logout-button').on('click', function(event) {
   $('#future-reservations-container').empty();
   $('#customer-available-rooms-container').empty();
   $('#manager-available-rooms-container').empty();
-  $('select').css({'display':'none'});
+  $('select').css({
+    'display': 'none'
+  });
   $('#arrival-date-input').val('');
 
   userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
@@ -253,7 +260,9 @@ let resetCustomerPage = (chosenUser) => {
   chosenUser.collectCustomerInformation();
   $('#past-reservations-container').empty();
   $('#future-reservations-container').empty();
-  $('select').css({'display':'none'});
+  $('select').css({
+    'display': 'none'
+  });
   $('#arrival-date-input').val('');
   hotel.setUpCustomer(chosenUser.username);
 }
