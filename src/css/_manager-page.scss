@@ -139,6 +139,8 @@
 
 #back-to-all-guests-button {
   @include main-button(.2vw, .2vw, white, black, 1em);
+  width: 45%;
+  float: left;
 }
 
 .back-to-all-guests-button-button:hover {
@@ -146,5 +148,12 @@
 }
 
 #see-guest-trips-button {
+  @include main-button(.2vw, .2vw, white, black, 1em);
   display: none;
+  width: 40%;
+  float: right;
+}
+
+.specific-guest-trip-card {
+  @include card-styling(1vw, 1em, 1.3vw)
 }
