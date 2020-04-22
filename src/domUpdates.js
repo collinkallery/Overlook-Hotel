@@ -1,8 +1,6 @@
 import $ from 'jquery';
-import Booking from './booking';
 import Hotel from './hotel';
 import Manager from './manager';
-import Room from './room';
 import User from './user';
 
 let domUpdates = {
@@ -141,7 +139,7 @@ let domUpdates = {
               <li>Nightly rate: ${reservation.costPerNight} USD</li>
             </ul>
           </section>
-          <button class="cancel-reservation-button">Cancel Reservation</button>
+          <button id=${reservation.id} class="cancel-reservation-button">Cancel Reservation</button>
         </div>`)
     })
   },
@@ -197,9 +195,26 @@ let domUpdates = {
         </section>
       </div>`);
   },
-  // showSpecificGuestTrips() {
-  //
-  // };
+  showSpecificGuestTrips(upcomingTrips) {
+    if (upcomingTrips.length >= 1) {
+      upcomingTrips.forEach(trip => {
+        $('#specific-guest-trips-container').append(`
+          <div class="specific-guest-trip-card">
+            <h2>Trip for ${trip.date}</h2>
+            <ul>
+              <li class="capitalize">Room Type: ${trip.roomType}</li>
+              <li>Room Number: #${trip.roomNumber}</li>
+              <li>Confirmation Code: ${trip.id}</li>
+            </ul>
+            <button id=${trip.id} class="cancel-reservation-button">Cancel Reservation</button>
+          </div>`)
+      })
+    } else {
+      $('#specific-guest-trips-container').html(`
+        <h2>This guest does not have any upcoming trips. Please use
+        the date-selector above to book a trip</p>`)
+    }
+  },
   displayCustomerReservationConfirmation(user, date, roomNumber) {
     $('#customer-available-rooms-container').empty();
     $('#customer-available-rooms-container').html(`
