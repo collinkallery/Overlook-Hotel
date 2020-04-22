@@ -134,7 +134,7 @@ class Hotel {
     let unavailableRooms = [];
     let availableRooms = this.allRooms;
     this.allBookings.filter(booking => {
-      let bookingDate =  Number(booking.date.split('/').join(''));
+      let bookingDate = Number(booking.date.split('/').join(''));
       if (bookingDate === date) {
         unavailableRooms.push(booking);
       }
@@ -143,7 +143,8 @@ class Hotel {
       this.allRooms.filter(room => {
         if (closedRoom.roomNumber === room.number) {
           availableRooms.splice(availableRooms.indexOf(room), 1)
-        }});
+        }
+      });
     })
     domUpdates.displayAvailableRoomsForCustomer(availableRooms);
     domUpdates.displayAvailableRoomsForManager(availableRooms);
